@@ -1,83 +1,73 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useRef, useEffect } from "react";
 
-const MatrixBackground = () => {
+export default function MatrixBg() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
+
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    let width = window.innerWidth;
-    let height = window.innerHeight;
-    canvas.width = width;
-    canvas.height = height;
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
 
     const fontSize = 16;
-    const columns = Math.floor(width / fontSize);
-    const drops = Array(columns).fill(1);
+    const columns = canvas.width / fontSize;
     
-    const characters = "アカサタナハマヤラワ0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    const drops: number[] = [];
+    for (let i = 0; i < columns; i++) {
+      drops[i] = 1;
+    }
 
-    const draw = () => {
-      ctx.fillStyle = "rgba(0, 0, 0, 0.1)"; // lower = longer tails
-      ctx.fillRect(0, 0, width, height);
+    const characters = "tyler"
 
+    function draw() {
+      if (!ctx || !canvas) return;
+
+      ctx.fillStyle = "rgb(0, 0, 0, 0.05)";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
       ctx.fillStyle = "#00FF00";
       ctx.font = `${fontSize}px monospace`;
 
       for (let i = 0; i < drops.length; i++) {
-        const text = characters.charAt(Math.floor(Math.random() * characters.length));
+        const text = characters.charAt(
+          Math.floor(Math.random() * characters.length)
+        );
         ctx.fillText(text, i * fontSize, drops[i] * fontSize);
 
-        if (drops[i] * fontSize > height && Math.random() > 0.975) {
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.95) {
           drops[i] = 0;
         }
+
         drops[i]++;
+
       }
-    };
+    }
 
-    const interval = setInterval(draw, 50);
+    const intervalID = setInterval(draw, 33);
 
-    // handle window resize
-    const handleResize = () => {
-      width = window.innerWidth;
-      height = window.innerHeight;
-      canvas.width = width;
-      canvas.height = height;
-    };
+    function handleResize() {
+      if (!canvas) return;
 
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
     window.addEventListener("resize", handleResize);
 
     return () => {
-      clearInterval(interval);
       window.removeEventListener("resize", handleResize);
-    };
+      clearInterval(intervalID);
+    }  
   }, []);
 
+
   return (
-    <div
-      style={{
-        position: "fixed",
-        inset: 0,
-        zIndex: -1,
-        filter: "blur(1.5px)",
-        overflow: "hidden",
-      }}
-    >
-      <canvas
-        ref={canvasRef}
-        style={{
-          width:"100%",
-          height:"100%",
-          backgroundColor: "black",
-        }}>
-      </canvas>
+    <div className="fixed inset-0 bg-black">
+      <canvas ref={canvasRef} className ="w-full h-full" />
     </div>
   );
-};
-
-export default MatrixBackground;
+}

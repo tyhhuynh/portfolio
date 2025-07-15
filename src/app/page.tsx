@@ -1,8 +1,4 @@
-import Image from "next/image";
+import MatrixBg from "./components/matrix-bg";
 
 export default function Home() {
-  return (
-    <div>
-    </div>
-  );
-}
+  return <MatrixBg />;
