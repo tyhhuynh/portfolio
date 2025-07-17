@@ -4,9 +4,10 @@ import React, { useEffect, useState } from "react";
 
 type CLIBoxProps = {
   lines: string[];
+  children?: React.ReactNode;
 };
 
-export default function CLIBox({ lines }: CLIBoxProps) {
+export default function CLIBox({ lines, children }: CLIBoxProps) {
   const [time, setTime] = useState("");
   const [date, setDate] = useState("");
 
@@ -25,17 +26,17 @@ export default function CLIBox({ lines }: CLIBoxProps) {
     }
 
     updateTime();
-    const interval = setInterval(updateTime, 1000); // update every second
+    const interval = setInterval(updateTime, 1000);
     return () => clearInterval(interval);
   }, []);
 
   return (
     <div className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
       <div
-        className="bg-[#000000] bg-opacity-80 text-[#00FF00]-400 font-mono p-0 rounded-lg border border-[#00FF00] max-w-2xl w-full pointer-events-auto"
+        className="bg-[#000000] bg-opacity-80 text-[#00ff00]-400 font-mono p-0 rounded-lg border border-[#00ff00] max-w-2xl w-full pointer-events-auto"
       >
         {/* HEADER */}
-        <div className="flex justify-between items-center px-4 py-2 border-b border-[#00FF00] text-sm text-[#00FF00]">
+        <div className="flex justify-between items-center px-4 py-2 border-b border-[#00ff00] text-sm text-[#00ff00]">
           <span>{time}</span>
           <span className="text-center">tyler_huynh@portfolio</span>
           <span>{date}</span>
@@ -48,7 +49,7 @@ export default function CLIBox({ lines }: CLIBoxProps) {
               {line}
             </p>
           ))}
-          <p className="animate-pulse text-[#00FF00]-500 mt-2">▊</p> {/* cursor */}
+          {children}
         </div>
       </div>
     </div>

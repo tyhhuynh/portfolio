@@ -72,7 +72,7 @@ export default function MatrixBg() {
 
   return (
     <div className="fixed inset-0 bg-black">
-      <canvas ref={canvasRef} className ="w-full h-full" style={{ filter: 'blur(1px)' }} />
+      <canvas ref={canvasRef} className ="w-full h-full" style={{ filter: 'blur(1.5px)' }} />
     </div>
   );
 }
