@@ -18,7 +18,7 @@ export default function Home() {
               .typeString("<br/>&gt; im tyler")
               .pauseFor(500)
               .typeString("<br/>&gt; to begin, type in 'projects', 'about', or 'contact'")
-              .typeString("<br/>&gt; ") // cursor is >_ instead of > _
+              .typeString("<br/>&gt; ")
               .start();
           }}
           options={{
