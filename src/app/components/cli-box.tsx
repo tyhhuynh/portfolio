@@ -33,17 +33,17 @@ export default function CLIBox({ lines, children }: CLIBoxProps) {
   return (
     <div className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
       <div
-        className="bg-[#000000] bg-opacity-80 text-[#00ff00]-400 font-mono p-0 rounded-lg border border-[#00ff00] max-w-2xl w-full pointer-events-auto"
+        className="bg-[#000000] bg-opacity-80 text-[#00ff00]-400 font-mono p-0 border border-[#00ff00] w-full max-w-[700px] pointer-events-auto"
       >
         {/* HEADER */}
-        <div className="flex justify-between items-center px-4 py-2 border-b border-[#00ff00] text-sm text-[#00ff00]">
+        <div className="flex justify-between items-center p-2 border-b border-[#00ff00] text-sm text-[#00ff00]">
           <span>{time}</span>
           <span className="text-center">tyler_huynh@portfolio</span>
           <span>{date}</span>
         </div>
 
         {/* BODY */}
-        <div className="p-4">
+        <div className="p-2 h-[300px] overflow-y-auto">
           {lines.map((line, idx) => (
             <p key={idx} className="leading-relaxed">
               {line}
