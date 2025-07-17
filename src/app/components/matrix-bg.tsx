@@ -19,11 +19,14 @@ export default function MatrixBg() {
     const columns = canvas.width / fontSize;
     
     const drops: number[] = [];
+    const speeds: number[] = [];
+
     for (let i = 0; i < columns; i++) {
-      drops[i] = 1;
+      drops[i] = 0;
+      speeds[i] = 1 + Math.random() * 2;
     }
 
-    const characters = "tyler"
+    const characters = "hello"
 
     function draw() {
       if (!ctx || !canvas) return;
@@ -43,7 +46,9 @@ export default function MatrixBg() {
           drops[i] = 0;
         }
 
-        drops[i]++;
+        drops[i]+= speeds[i];
+
+
 
       }
     }
@@ -67,7 +72,7 @@ export default function MatrixBg() {
 
   return (
     <div className="fixed inset-0 bg-black">
-      <canvas ref={canvasRef} className ="w-full h-full" />
+      <canvas ref={canvasRef} className ="w-full h-full" style={{ filter: 'blur(1px)' }} />
     </div>
   );
 }
