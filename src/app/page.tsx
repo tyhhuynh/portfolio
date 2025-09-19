@@ -1,99 +1,209 @@
-"use client";
+'use client';
 
-import MatrixBg from "./components/matrix-bg";
-import CLIBox from "./components/cli-box";
-import Typewriter from "typewriter-effect";
-import { useEffect, useRef, useState } from "react";
+import MatrixBg from './components/matrix-bg';
+import CLIBox from './components/cli-box';
+import Options from './components/options';
+import Typewriter from 'typewriter-effect';
+
+import { useState, useEffect } from 'react';
+import { useTypewriter, useCLIInput, useCLICommands } from '@/lib/hooks';
+import {
+  createTypewriterConfig,
+  handleContact,
+  handleProjects,
+} from '@/lib/utils';
+import { CLI_STYLES } from '@/lib/styles';
+import { TIMING, LIMITS } from '@/lib/constants';
+import { Toaster } from 'sonner';
 
 export default function Home() {
-  const [showTypewriter, setShowTypewriter] = useState(false);
-  const [showInput, setShowInput] = useState(false);
-  const [userInput, setUserInput] = useState("");
+  // const [showInput, setShowInput] = useState(false);
+  const {
+    showTypewriter,
+    typewriterRef,
+    removeTypewriterCursor,
+    resetTypeWriter,
+  } = useTypewriter();
+  const { userInput, caretOffset, ghostRef, handleInputChange, clearInput } =
+    useCLIInput(LIMITS.CLI_LINE_LENGTH);
+  const {
+    commandHistory,
+    handleCommand,
+    currentView,
+    contactSelection,
+    projectSelection,
+    handleNavigation,
+    handleSelection,
+    updateContactSelection,
+    updateProjectSelection,
+    setShowInput,
+    showInput,
+  } = useCLICommands(clearInput);
 
-  const ghostRef = useRef<HTMLSpanElement>(null);
-  const [caretOffset, setCaretOffset] = useState(0);
-
-  const typewriterRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const timer = setTimeout(() => setShowTypewriter(true), 500);
-    return () => clearTimeout(timer);
-  }, []);
-
-  useEffect(() => {
-    if (ghostRef.current) {
-      setCaretOffset(ghostRef.current.offsetWidth);
+  const handleKeyPress = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      if (userInput.trim() === 'clear') {
+        resetTypeWriter();
+        handleCommand(userInput);
+        clearInput();
+      } else {
+        handleCommand(userInput);
+        clearInput();
+      }
     }
-  }, [userInput]);
+  };
 
-  const removeTypewriterCursor = () => {
-    const cursorEl = typewriterRef.current?.querySelector(".Typewriter__cursor");
-    if (cursorEl) cursorEl.remove();
-  }
+  // Add this useEffect after the existing useEffects
+  useEffect(() => {
+    const handleGlobalKeyPress = (e: KeyboardEvent) => {
+      if (currentView === 'contact' || currentView === 'projects') {
+        if (e.key === 'ArrowUp') {
+          e.preventDefault();
+          handleNavigation('up');
+        } else if (e.key === 'ArrowDown') {
+          e.preventDefault();
+          handleNavigation('down');
+        } else if (e.key === 'Enter') {
+          e.preventDefault();
+          const options =
+            currentView === 'contact'
+              ? ['LinkedIn', 'GitHub', 'Email', '[EXIT]']
+              : [
+                  'Project Alpha',
+                  'Project Beta',
+                  'Project Gamma',
+                  'Project Kappa',
+                  '[EXIT]',
+                ];
+          const selectedIndex =
+            currentView === 'contact' ? contactSelection : projectSelection;
+          const selectedOption = options[selectedIndex];
+          const value = selectedOption
+            .toLowerCase()
+            .replace(/[\[\]]/g, '')
+            .replace(/\s+/g, '-');
+
+          handleSelection(value);
+        }
+      }
+    };
+
+    if (currentView === 'contact' || currentView === 'projects') {
+      document.addEventListener('keydown', handleGlobalKeyPress);
+    }
+
+    return () => {
+      document.removeEventListener('keydown', handleGlobalKeyPress);
+    };
+  }, [
+    currentView,
+    handleNavigation,
+    handleSelection,
+    contactSelection,
+    projectSelection,
+  ]);
 
   return (
-    <div className="relative w-full h-screen bg-[#000000] text-[#00ff00]">
+    <div className={CLI_STYLES.CONTAINER}>
+      <Toaster position="top-center" />
       <MatrixBg />
-      <CLIBox lines={[]}>
-        <div 
+      <CLIBox
+        lines={
+          currentView === 'contact' || currentView === 'projects'
+            ? []
+            : commandHistory
+        }
+      >
+        <div
           className="whitespace-pre-wrap text-[#00ff00] font-mono"
           ref={typewriterRef}
         >
-          {showTypewriter && (
+          {/* Only show typewriter if no command history */}
+          {commandHistory.length === 0 && showTypewriter && (
             <Typewriter
               onInit={(typewriter) => {
                 typewriter
-                  .typeString("> ")
-                  .pauseFor(500)
-                  .typeString("hello world!")
-                  .pauseFor(1200)
-                  .typeString("\n> im tyler")
-                  .pauseFor(1200)
-                  .typeString("\n> to learn more about me, type in 'projects', 'about', or 'contact'")
-                  .pauseFor(500)
+                  .typeString('> ')
+                  // .pauseFor(TIMING.TYPEWRITER_DELAY)
+                  .typeString('hello world!')
+                  // .pauseFor(TIMING.TYPEWRITER_PAUSE)
+                  .typeString('\n> im tyler')
+                  // .pauseFor(TIMING.TYPEWRITER_PAUSE)
+                  .typeString(
+                    "\n> welcome to my terminal. execute command 'help' to get started!"
+                  )
+                  // .pauseFor(TIMING.TYPEWRITER_DELAY)
                   .callFunction(() => {
                     setShowInput(true);
                     removeTypewriterCursor();
                   })
                   .start();
               }}
-              options={{
-                cursor: "_",
-                delay: 50,
-                autoStart: true,
-                wrapperClassName: "inline font-mono leading-none",
-              }}
+              options={createTypewriterConfig()}
             />
           )}
-          {showInput && (
-            <div className="mt-0.5 flex items-center font-mono text-[#00ff00] w-full text-base">
-              <span className="mr-2.5 shrink-0">&gt;</span>
-              <div className="relative w-full">
-                <span
-                  ref={ghostRef}
-                  className="invisible absolute top-0 left-0 whitespace-pre leading-none"
-                  aria-hidden="true"
-                >
-                  {userInput || "\u200B"}
-                </span>
-                
-                <span
-                  className="caret-underscore absolute top-0 leading-none"
-                  style={{
-                    transform: `translateX(${caretOffset}px)`,
-                  }}
-                >
-                  _
-                </span>
-                <input
-                  type="text"
-                  value={userInput}
-                  onChange={(e) => setUserInput(e.target.value)}
-                  className="w-full bg-transparent outline-none caret-transparent"
-                  autoFocus
-                />
+
+          {/* Show input field when not in contact or projects view */}
+          {currentView !== 'contact' &&
+            currentView !== 'projects' &&
+            showInput && (
+              <div className="mt-0.5 flex items-center font-mono text-[#00ff00] w-full text-base">
+                <span className="mr-2.5 shrink-0">&gt;</span>
+                <div className="relative w-full" key={`input-${currentView}`}>
+                  <span
+                    ref={ghostRef}
+                    className="invisible absolute top-0.5 left-0 whitespace-pre leading-none"
+                    aria-hidden="true"
+                  >
+                    {userInput || '\u200B'}
+                  </span>
+                  <span
+                    className="caret-underscore absolute top-0.5 left-0 leading-none"
+                    style={{
+                      transform: `translateX(${caretOffset}px)`,
+                    }}
+                  >
+                    _
+                  </span>
+                  <input
+                    type="text"
+                    value={userInput}
+                    onChange={handleInputChange}
+                    onKeyDown={(e) => {
+                      if (
+                        ((currentView as any) === 'contact' ||
+                          (currentView as any) === 'projects') &&
+                        (e.key === 'ArrowUp' || e.key === 'ArrowDown')
+                      ) {
+                        return;
+                      }
+                      handleKeyPress(e);
+                    }}
+                    className="w-full bg-transparent outline-none caret-transparent"
+                    autoFocus
+                    aria-label="CLI input"
+                    placeholder="[placeholder]"
+                  />
+                </div>
               </div>
-            </div>
+            )}
+
+          {/* Contact options when in contact view */}
+          {currentView === 'contact' && (
+            <Options
+              options={handleContact()}
+              selectedIndex={contactSelection}
+              onSelect={(value) => handleSelection(value)}
+              onHover={(index) => updateContactSelection(index)}
+            />
+          )}
+          {currentView === 'projects' && (
+            <Options
+              options={handleProjects()}
+              selectedIndex={projectSelection}
+              onSelect={(value) => handleSelection(value)}
+              onHover={(index) => updateProjectSelection(index)}
+            />
           )}
         </div>
       </CLIBox>

@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 
 type CLIBoxProps = {
   lines: string[];
@@ -8,18 +8,18 @@ type CLIBoxProps = {
 };
 
 export default function CLIBox({ lines, children }: CLIBoxProps) {
-  const [time, setTime] = useState("");
-  const [date, setDate] = useState("");
+  const [time, setTime] = useState('');
+  const [date, setDate] = useState('');
 
   useEffect(() => {
     function updateTime() {
       const now = new Date();
-      const hours = now.getHours().toString().padStart(2, "0");
-      const minutes = now.getMinutes().toString().padStart(2, "0");
-      const seconds = now.getSeconds().toString().padStart(2, "0");
+      const hours = now.getHours().toString().padStart(2, '0');
+      const minutes = now.getMinutes().toString().padStart(2, '0');
+      const seconds = now.getSeconds().toString().padStart(2, '0');
       setTime(`${hours}:${minutes}:${seconds}`);
 
-      const month = (now.getMonth() + 1).toString().padStart(2, "0");
+      const month = (now.getMonth() + 1).toString().padStart(2, '0');
       const dateNum = now.getDate();
       const year = now.getFullYear();
       setDate(`${month}.${dateNum}.${year}`);
@@ -32,9 +32,7 @@ export default function CLIBox({ lines, children }: CLIBoxProps) {
 
   return (
     <div className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
-      <div
-        className="bg-[#000000] bg-opacity-80 text-[#00ff00]-400 font-mono p-0 border border-[#00ff00] w-full max-w-[700px] pointer-events-auto"
-      >
+      <div className="bg-[#000000] bg-opacity-80 text-[#00ff00]-400 font-mono p-0 border border-[#00ff00] w-full max-w-[800px] pointer-events-auto">
         {/* HEADER */}
         <div className="flex justify-between items-center p-2 border-b border-[#00ff00] text-sm text-[#00ff00]">
           <span>{time}</span>
@@ -43,9 +41,9 @@ export default function CLIBox({ lines, children }: CLIBoxProps) {
         </div>
 
         {/* BODY */}
-        <div className="p-2 h-[300px] overflow-y-auto">
+        <div className="p-2 h-[400px] overflow-y-auto overflow-x-hidden">
           {lines.map((line, idx) => (
-            <p key={idx} className="leading-relaxed">
+            <p key={idx} className="leading-relaxed break-words whitespace-pre">
               {line}
             </p>
           ))}
