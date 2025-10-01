@@ -113,7 +113,7 @@ export default function ChatRoom({ passcode, me, onLeave }: ChatRoomProps) {
         if (cancelled) return;
         errorToast('host has ended session');
         onLeave ? onLeave() : (window.location.href = '/projects/null-room');
-      })
+      });
 
       // JOIN only once per connection
       if (!joinedRef.current) {
@@ -169,7 +169,7 @@ export default function ChatRoom({ passcode, me, onLeave }: ChatRoomProps) {
 
     ensureConnectedAndJoined();
     return () => { cancelled = true; };
-  }, [passcode, onLeave]);
+  }, [passcode, onLeave, hostName]);
 
   const sendMessage = async () => {
     const text = newMessage.trim();

@@ -1,11 +1,10 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { COLORS, TIMING, LIMITS, CONTACT_DATA } from './constants';
+import { TIMING, LIMITS, CONTACT_DATA } from './constants';
 import {
   handleHelp,
   handleAbout,
-  handleContact,
   handleResume,
   parseCLIInput,
   getOptionsTexts,
@@ -93,7 +92,7 @@ export const useCLICommands = (clearInput?: () => void) => {
   const [showInput, setShowInput] = useState(false);
 
   const handleCommand = (input: string) => {
-    const { command, args } = parseCLIInput(input);
+    const { command } = parseCLIInput(input);
 
     switch (command) {
       case 'help':
@@ -135,7 +134,7 @@ export const useCLICommands = (clearInput?: () => void) => {
     if (currentView !== 'contact' && currentView !== 'projects') return;
 
     const isContact = currentView === 'contact';
-    const options = getOptionsTexts(currentView as any);
+    const options = getOptionsTexts(currentView as 'contact' | 'projects');
 
     const currentSelection = isContact ? contactSelection : projectSelection;
     const setSelection = isContact ? setContactSelection : setProjectSelection;

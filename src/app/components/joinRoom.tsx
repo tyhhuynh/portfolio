@@ -21,10 +21,10 @@ export default function JoinRoom({
           isHost: result.isOwner 
         });
       }
-    } catch (error: any) {
+    } catch (error: unknown) {
+      const errorMessage = error instanceof Error ? error.message : 'unknown error';
       console.error('Failed to join room:', error);
-      // Check if it's a "room not found" error
-      if (error.message?.includes('Room not found') || error.message?.includes('not found')) {
+      if (errorMessage?.includes('room not found') || errorMessage?.includes('not found')) {
         setError('room does not exist');
       } else {
         setError('failed to join room');

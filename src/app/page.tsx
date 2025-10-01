@@ -5,7 +5,7 @@ import CLIBox from './components/cli-box';
 import Options from './components/options';
 import Typewriter from 'typewriter-effect';
 
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useTypewriter, useCLIInput, useCLICommands } from '@/lib/hooks';
 import {
   createTypewriterConfig,
@@ -65,7 +65,7 @@ export default function Home() {
           handleNavigation('down');
         } else if (e.key === 'Enter') {
           e.preventDefault();
-          const options = getOptions(currentView as any);
+          const options = getOptions(currentView as 'contact' | 'projects');
           const selectedIndex =
             currentView === 'contact' ? contactSelection : projectSelection;
           const selected = options[selectedIndex];

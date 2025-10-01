@@ -26,7 +26,6 @@ export const formatDate = (date: Date): string => {
   return `${month}.${day}.${year}`;
 };
 
-
 // Sets up canvas with proper dimensions and context
 export const setupCanvas = (
   canvas: HTMLCanvasElement
@@ -49,17 +48,13 @@ export const randomIntBetween = (min: number, max: number): number => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
-/**
- * Clamps a value between min and max
- */
+// Clamps a value between min and max
 export const clamp = (value: number, min: number, max: number): number => {
   return Math.min(Math.max(value, min), max);
 };
 
-/**
- * Debounces a function call
- */
-export const debounce = <T extends (...args: any[]) => any>(
+// Debounces a function call
+export const debounce = <T extends (...args: unknown[]) => unknown>(
   func: T,
   wait: number
 ): ((...args: Parameters<T>) => void) => {
@@ -70,10 +65,8 @@ export const debounce = <T extends (...args: any[]) => any>(
   };
 };
 
-/**
- * Throttles a function call
- */
-export const throttle = <T extends (...args: any[]) => any>(
+// Throttles a function call
+export const throttle = <T extends (...args: unknown[]) => unknown>(
   func: T,
   limit: number
 ): ((...args: Parameters<T>) => void) => {
@@ -87,16 +80,12 @@ export const throttle = <T extends (...args: any[]) => any>(
   };
 };
 
-/**
- * Generates a random character from a given string
- */
+// Generates a random character from a given string
 export const getRandomChar = (characters: string): string => {
   return characters.charAt(Math.floor(Math.random() * characters.length));
 };
 
-/**
- * Creates a typewriter configuration object
- */
+// Creates a typewriter configuration object
 export const createTypewriterConfig = (
   options: {
     cursor?: string;
