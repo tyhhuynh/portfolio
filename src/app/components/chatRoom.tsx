@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useRef, useState, useCallback } from 'react';
 import { chatService } from '@/lib/signalr';
-import { errorToast, successToast } from '@/lib/utils';
+import { errorToast } from '@/lib/utils';
 
 interface Message {
   displayName: string;
