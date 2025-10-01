@@ -107,7 +107,7 @@ class ChatService {
     await this.connection!.invoke('SendMessage', passcode, text);
   }
   
-  onReceiveMessage(callback: (data: any) => void) {
+  onReceiveMessage(callback: (data: { displayName: string, text: string; utc: string }) => void) {
     this.connection?.on('ReceiveMessage', callback);
     return () => this.connection?.off('ReceiveMessage', callback);
   }

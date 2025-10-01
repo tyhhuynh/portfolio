@@ -112,7 +112,11 @@ export default function ChatRoom({ passcode, me, onLeave }: ChatRoomProps) {
       const offRoomClosed = chatService.onRoomClosed(() => {
         if (cancelled) return;
         errorToast('host has ended session');
-        onLeave ? onLeave() : (window.location.href = '/projects/null-room');
+        if (onLeave) {
+          onLeave();
+        } else {
+          window.location.href = '/projects/null-room';
+        }
       });
 
       // JOIN only once per connection
