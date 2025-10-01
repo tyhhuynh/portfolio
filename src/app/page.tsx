@@ -156,11 +156,7 @@ export default function Home() {
                     value={userInput}
                     onChange={handleInputChange}
                     onKeyDown={(e) => {
-                      if (
-                        ((currentView as any) === 'contact' ||
-                          (currentView as any) === 'projects') &&
-                        (e.key === 'ArrowUp' || e.key === 'ArrowDown')
-                      ) {
+                      if ((e.key === 'ArrowUp' || e.key === 'ArrowDown')) {
                         return;
                       }
                       handleKeyPress(e);
