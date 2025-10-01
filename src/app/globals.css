@@ -22,7 +22,7 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: monospace;
 }
 @keyframes blink {
   0%,
@@ -33,6 +33,14 @@ body {
   100% {
     opacity: 0;
   }
+}
+
+* {
+  scrollbar-color: #00ff00 #000000; /* scrollbar, background rail */ 
+}
+
+.scrollbar-magenta {
+  scrollbar-color: #ff00ff transparent;
 }
 
 /* blinking caret for typewriter effect */

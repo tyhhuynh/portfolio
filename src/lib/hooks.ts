@@ -8,13 +8,12 @@ import {
   handleContact,
   handleResume,
   parseCLIInput,
+  getOptionsTexts,
+  successToast,
+  errorToast
 } from './utils';
 
-import { toast } from 'sonner';
-
-/**
- * Custom hook for typewriter effect with delayed start
- */
+// Custom hook for typewriter effect with delayed start
 export const useTypewriter = (delay: number = TIMING.TYPEWRITER_DELAY) => {
   const [showTypewriter, setShowTypewriter] = useState(false);
   const typewriterRef = useRef<HTMLDivElement>(null);
@@ -136,15 +135,7 @@ export const useCLICommands = (clearInput?: () => void) => {
     if (currentView !== 'contact' && currentView !== 'projects') return;
 
     const isContact = currentView === 'contact';
-    const options = isContact
-      ? ['LinkedIn', 'GitHub', 'Email', '[EXIT]']
-      : [
-          'Project Alpha',
-          'Project Beta',
-          'Project Gamma',
-          'Project Kappa',
-          '[EXIT]',
-        ];
+    const options = getOptionsTexts(currentView as any);
 
     const currentSelection = isContact ? contactSelection : projectSelection;
     const setSelection = isContact ? setContactSelection : setProjectSelection;
@@ -176,7 +167,7 @@ export const useCLICommands = (clearInput?: () => void) => {
 
     if (value === 'exit') {
       setCurrentView('home');
-      setCommandHistory(['> exiting...', ...handleHelp()]);
+      setCommandHistory([...handleHelp()]);
       if (clearInput) clearInput();
     } else if (currentView === 'contact') {
       // Contact-specific actions
@@ -190,24 +181,18 @@ export const useCLICommands = (clearInput?: () => void) => {
         navigator.clipboard
           .writeText(CONTACT_DATA.email)
           .then(() => {
-            toast.success('email copied to clipboard!', {
-              style: {
-                background: COLORS.BLACK,
-                color: COLORS.GREEN,
-                border: `2px dashed ${COLORS.GREEN}`,
-              },
-            });
+            successToast('success: email copied to clipboard!')
           })
           .catch(() => {
-            toast.error('failed to copy email');
+            errorToast('ERROR: failed to copy email');
           });
         setCommandHistory((prev) => [...prev, 'email copied to clipboard']);
       }
     } else if (currentView === 'projects') {
-      if (value === 'project-alpha') {
-        window.location.href = '/projects/game';
+      if (value === 'null-room') {
+        window.location.href = '/projects/null-room';
       } else if (value === 'project-beta') {
-        window.location.href = '/projects/incog-chat';
+        window.location.href = '/projects/phaser-arcade';
       } else if (value === 'project-gamma') {
         window.location.href = '/projects/naruto-hand-seals';
         // } else if (value === 'project-epsilon') {

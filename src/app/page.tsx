@@ -11,6 +11,7 @@ import {
   createTypewriterConfig,
   handleContact,
   handleProjects,
+  getOptions,
 } from '@/lib/utils';
 import { CLI_STYLES } from '@/lib/styles';
 import { TIMING, LIMITS } from '@/lib/constants';
@@ -53,7 +54,6 @@ export default function Home() {
     }
   };
 
-  // Add this useEffect after the existing useEffects
   useEffect(() => {
     const handleGlobalKeyPress = (e: KeyboardEvent) => {
       if (currentView === 'contact' || currentView === 'projects') {
@@ -65,25 +65,12 @@ export default function Home() {
           handleNavigation('down');
         } else if (e.key === 'Enter') {
           e.preventDefault();
-          const options =
-            currentView === 'contact'
-              ? ['LinkedIn', 'GitHub', 'Email', '[EXIT]']
-              : [
-                  'Project Alpha',
-                  'Project Beta',
-                  'Project Gamma',
-                  'Project Kappa',
-                  '[EXIT]',
-                ];
+          const options = getOptions(currentView as any);
           const selectedIndex =
             currentView === 'contact' ? contactSelection : projectSelection;
-          const selectedOption = options[selectedIndex];
-          const value = selectedOption
-            .toLowerCase()
-            .replace(/[\[\]]/g, '')
-            .replace(/\s+/g, '-');
-
-          handleSelection(value);
+          const selected = options[selectedIndex];
+          const value = selected?.value ?? '';
+          if (value) handleSelection(value);
         }
       }
     };
@@ -118,21 +105,21 @@ export default function Home() {
           className="whitespace-pre-wrap text-[#00ff00] font-mono"
           ref={typewriterRef}
         >
-          {/* Only show typewriter if no command history */}
+
           {commandHistory.length === 0 && showTypewriter && (
             <Typewriter
               onInit={(typewriter) => {
                 typewriter
                   .typeString('> ')
-                  // .pauseFor(TIMING.TYPEWRITER_DELAY)
+                  .pauseFor(TIMING.TYPEWRITER_DELAY)
                   .typeString('hello world!')
-                  // .pauseFor(TIMING.TYPEWRITER_PAUSE)
+                  .pauseFor(TIMING.TYPEWRITER_PAUSE)
                   .typeString('\n> im tyler')
-                  // .pauseFor(TIMING.TYPEWRITER_PAUSE)
+                  .pauseFor(TIMING.TYPEWRITER_PAUSE)
                   .typeString(
                     "\n> welcome to my terminal. execute command 'help' to get started!"
                   )
-                  // .pauseFor(TIMING.TYPEWRITER_DELAY)
+                  .pauseFor(TIMING.TYPEWRITER_DELAY)
                   .callFunction(() => {
                     setShowInput(true);
                     removeTypewriterCursor();
@@ -143,7 +130,6 @@ export default function Home() {
             />
           )}
 
-          {/* Show input field when not in contact or projects view */}
           {currentView !== 'contact' &&
             currentView !== 'projects' &&
             showInput && (
@@ -182,13 +168,11 @@ export default function Home() {
                     className="w-full bg-transparent outline-none caret-transparent"
                     autoFocus
                     aria-label="CLI input"
-                    placeholder="[placeholder]"
                   />
                 </div>
               </div>
             )}
 
-          {/* Contact options when in contact view */}
           {currentView === 'contact' && (
             <Options
               options={handleContact()}
@@ -197,6 +181,7 @@ export default function Home() {
               onHover={(index) => updateContactSelection(index)}
             />
           )}
+
           {currentView === 'projects' && (
             <Options
               options={handleProjects()}
@@ -205,6 +190,7 @@ export default function Home() {
               onHover={(index) => updateProjectSelection(index)}
             />
           )}
+
         </div>
       </CLIBox>
     </div>

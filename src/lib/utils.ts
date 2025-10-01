@@ -1,4 +1,5 @@
 import { ABOUT_DATA, COLORS, LIMITS } from './constants';
+import { toast } from 'sonner';
 
 export const limitTextLength = (
   text: string,
@@ -25,9 +26,8 @@ export const formatDate = (date: Date): string => {
   return `${month}.${day}.${year}`;
 };
 
-/**
- * Sets up canvas with proper dimensions and context
- */
+
+// Sets up canvas with proper dimensions and context
 export const setupCanvas = (
   canvas: HTMLCanvasElement
 ): CanvasRenderingContext2D | null => {
@@ -39,16 +39,12 @@ export const setupCanvas = (
   return ctx;
 };
 
-/**
- * Generates random number between min and max (inclusive)
- */
+// Generates random number between min and max (inclusive)
 export const randomBetween = (min: number, max: number): number => {
   return Math.random() * (max - min) + min;
 };
 
-/**
- * Generates random integer between min and max (inclusive)
- */
+// Generates random integer between min and max (inclusive)
 export const randomIntBetween = (min: number, max: number): number => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 };
@@ -135,8 +131,8 @@ export const handleHelp = (): string[] => {
     '  about    \t--learn more about me',
     '  projects \t--view my projects',
     '  resume   \t--view my resume',
-    '  contact  \t--get in touch with me',
-    '  clear    \t--clear the terminal',
+    '  contact  \t--ping me',
+    '  clear    \t--clear terminal',
     '',
   ];
 };
@@ -155,8 +151,8 @@ export const handleAbout = (): string[] => {
     for (const word of words) {
       const testLine = currentLine + word + ' ';
       if (testLine.length > maxLength) {
-        lines.push(currentLine.slice(0, -1) + '"');
-        currentLine = '    "' + word + ' ';
+        lines.push(currentLine.slice(0, -1));
+        currentLine = '    ' + word + ' ';
       } else {
         currentLine = testLine;
       }
@@ -166,12 +162,39 @@ export const handleAbout = (): string[] => {
     return lines;
   };
 
+  const formatInterests = (interests: string[]) => {
+    const maxLength = 80;
+    const interestsString = interests.map((i) => `"${i}"`).join(', ');
+
+    if (interestsString.length <= maxLength) {
+      return [`  "interests": [${interestsString}]`];
+    }
+  
+    const words = interestsString.split(' ');
+    const lines = [];
+    let currentLine = '  "interests": [';
+  
+    for (const word of words) {
+      const testLine = currentLine + word + ' ';
+      if (testLine.length > maxLength) {
+        lines.push(currentLine.slice(0, -1));
+        currentLine = '    ' + word + ' ';
+      } else {
+        currentLine = testLine;
+      }
+    }
+  
+    lines.push(currentLine.slice(0, -1) + ']');
+    return lines;
+  };
+  
+
   return [
     '{',
     `  "name": "${ABOUT_DATA.name}",`,
     `  "title": "${ABOUT_DATA.title}",`,
     `  "location": "${ABOUT_DATA.location}",`,
-    `  "interests": [${ABOUT_DATA.interests.map((i) => `"${i}"`).join(', ')}],`,
+    ...formatInterests(ABOUT_DATA.interests),
     ...formatSummary(ABOUT_DATA.summary),
     '}',
   ];
@@ -181,6 +204,24 @@ export const handleResume = (): string[] => {
   window.open('/old-resume.pdf', '_blank');
   return ['opening resume...'];
 };
+
+type View = 'contact' | 'projects' | (string & {});
+
+export type Option = { text: string, type: string; value: string };
+
+export const getOptions = (view: View): Option[] => {
+  switch (view) {
+    case 'contact':
+      return handleContact();
+    case 'projects':
+      return handleProjects();
+    default:
+      return  [];
+  }
+};
+
+export const getOptionsTexts = (view: View): string[] =>
+  getOptions(view).map(o => o.text);
 
 export const handleContact = (): Array<{
   text: string;
@@ -201,7 +242,7 @@ export const handleProjects = (): Array<{
   value: string;
 }> => {
   return [
-    { text: 'Project Alpha', type: 'button', value: 'project-alpha' },
+    { text: 'Null-Room', type: 'button', value: 'null-room' },
     { text: 'Project Beta', type: 'button', value: 'project-beta' },
     { text: 'Project Gamma', type: 'button', value: 'project-gamma' },
     { text: 'Project Kappa', type: 'button', value: 'project-kappa' },
@@ -209,9 +250,7 @@ export const handleProjects = (): Array<{
   ];
 };
 
-/**
- * Parses CLI input and returns command and arguments
- */
+
 export const parseCLIInput = (
   input: string
 ): { command: string; args: string[] } => {
@@ -227,9 +266,28 @@ export const generateMatrixCharacters = (): string => {
   return getRandomChar(chars);
 };
 
-/**
- * Creates a canvas animation frame with proper cleanup
- */
+
+export const errorToast = (message: string) => {
+  toast.error(message, {
+    style: {
+      background: COLORS.BLACK,
+      color: '#ff0000',
+      border: '2px dashed #ff0000',
+    },
+  });
+};
+
+export const successToast = (message: string) => {
+  toast.success(message, {
+    style: {
+      background: COLORS.BLACK,
+      color: '#00ff00',
+      border: '2px dashed #00ff00',
+    },
+  });
+};
+
+// Creates a canvas animation frame with proper cleanup
 export const createAnimationFrame = (
   callback: (timestamp: number) => void,
   fps: number = 60

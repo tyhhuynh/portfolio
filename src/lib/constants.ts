@@ -17,36 +17,10 @@ export const LIMITS = {
 
 export const ABOUT_DATA = {
   name: 'Tyler Hao Huynh',
-  title: 'Software Developer + Aspiring Game Dev',
+  title: 'Software Developer | Aspiring Game Dev',
   location: 'Thousand Oaks, CA',
-  interests: ['software & game dev', 'powerlifting', 'gaming', 'cooking'],
-  summary:
-    '[FILL IN LATER || testing to see if this wraps the CLI terminal correctly blah blah blah I am excited to play EFT 1.0 blah blah blah I need to gym blah blah blah chicken bake]',
-  // skills: {
-  //   // add stuff about Pi5 project
-  //   languages: ['Python', 'TypeScript', 'C/C#/C++', 'Java', 'HTML/CSS', 'SQL'],
-  //   technologies: [
-  //     'Vercel',
-  //     'Render',
-  //     'Docker',
-  //     'Figma',
-  //     'Azure',
-  //     'PostgreSQL',
-  //     'Supabase',
-  //     'pandas',
-  //   ],
-  //   concepts: [
-  //     'Data Structures & Algorithms',
-  //     'Systems Design',
-  //     'Object-Oriented Programming',
-  //     'Software/Web/Game Development',
-  //     'Testing & Debugging',
-  //     'RESTful APIs',
-  //     'WebSockets',
-  //     'CORS',
-  //     'Rate Limiting',
-  //   ],
-  // },
+  interests: ['software & game dev', 'raspberry pi tinkering', 'PC building', 'keyboard modding', 'powerlifting', 'competitive gaming', 'cooking'],
+  summary: "Recent UC Davis graduate with focus on building practical and robust software. Thrives in collaborative environments and values lifelong learning. Curiosity fuels both my career and game projects on the side."
 };
 
 export const CONTACT_DATA = {

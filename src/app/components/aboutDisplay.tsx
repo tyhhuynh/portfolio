@@ -1,4 +1,3 @@
-// src/app/components/AboutDisplay.tsx
 'use client';
 
 import { ABOUT_DATA } from '@/lib/constants';
