@@ -190,7 +190,7 @@ export const handleAbout = (): string[] => {
 };
 
 export const handleResume = (): string[] => {
-  window.open('/old-resume.pdf', '_blank');
+  window.open('/tyhuynh-resume.pdf', '_blank');
   return ['opening resume...'];
 };
 
