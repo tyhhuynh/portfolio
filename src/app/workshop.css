@@ -1,0 +1,60 @@
+@import 'tailwindcss';
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #000000;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: monospace;
+}
+@keyframes blink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+* {
+  scrollbar-color: #00ff00 #000000; /* scrollbar, background rail */ 
+}
+
+.scrollbar-magenta {
+  scrollbar-color: #ff00ff transparent;
+}
+
+/* blinking caret for typewriter effect */
+.Typewriter__cursor {
+  animation: blink 1s steps(2, start) infinite !important;
+  will-change: opacity;
+}
+
+/* blinking caret for input text*/
+.caret-underscore {
+  animation: blink 1s steps(2, start) infinite !important;
+  color: #00ff00;
+  font-size: 1rem/1 var(--font-mono, monospace);
+  line-height: 1.5;
+  pointer-events: none;
+  user-select: none;
+}
