@@ -1,26 +1,98 @@
-@import "tailwindcss";
+@import "tw-animate-css";
 
+@custom-variant dark (&:is(.dark *));
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* === Single source of truth: your palette === */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --radius: 0.625rem;
+
+  /* Light */
+  --background: #e0e1dd;
+  --foreground: #0d1b2a;
+
+  --primary: #415a77;
+  --primary-foreground: #e0e1dd;
+
+  --secondary: #778da9;
+  --secondary-foreground: #0d1b2a;
+
+  --accent: #1b263b;
+  --accent-foreground: #e0e1dd;
+
+  --border: #cfd3d6;
+  --input: #cfd3d6;
+  --ring: #7a8aa0;
+
+  /* If you use these shadcn surfaces, alias them: */
+  --card: var(--background);
+  --card-foreground: var(--foreground);
+  --popover: var(--background);
+  --popover-foreground: var(--foreground);
 }
 
+.dark {
+  /* Dark */
+  --background: #0d1b2a;
+  --foreground: #e0e1dd;
+
+  --primary: #778da9;
+  --primary-foreground: #0d1b2a;
+
+  --secondary: #415a77;
+  --secondary-foreground: #e0e1dd;
+
+  --accent: #1b263b;
+  --accent-foreground: #e0e1dd;
+
+  --border: #223044;
+  --input: #223044;
+  --ring: #8aa0bd;
+
+  --card: var(--background);
+  --card-foreground: var(--foreground);
+  --popover: var(--background);
+  --popover-foreground: var(--foreground);
+}
+
+/* Map your CSS vars to Tailwind tokens (v4) */
 @theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Optional surfaces if you use them */
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* Base app styles */
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
   }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  body {
+    @apply bg-background text-foreground;
+  }
 }
