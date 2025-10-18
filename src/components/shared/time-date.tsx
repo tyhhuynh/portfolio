@@ -22,7 +22,7 @@ function formatNow() {
 
 export function TimeDateBox() {
   const [mounted, setMounted] = useState(false);
-  const [{ time, date }, setNow] = useState(formatNow);
+  const [{ time }, setNow] = useState(formatNow);
 
   useEffect(() => {
     setMounted(true);

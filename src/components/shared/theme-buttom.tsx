@@ -3,7 +3,7 @@
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { Moon, Sun } from "lucide-react";
-import { button, buttonCx } from "@/lib/button";
+import { buttonCx } from "@/lib/button";
 
 export function ThemeButton() {
   const { theme, resolvedTheme, setTheme } = useTheme();
