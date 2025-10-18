@@ -8,6 +8,9 @@ import { ThemeDither } from "@/components/shared/ui/ThemeDither";
 
 export const metadata: Metadata = {
   title: "Tyler Huynh",
+  icons: {
+    icon: "/favicon.ico",
+  }
 };
 
 export default function RootLayout({
