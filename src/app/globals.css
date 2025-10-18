@@ -5,28 +5,28 @@
 @tailwind components;
 @tailwind utilities;
 
-/* === Single source of truth: your palette === */
 :root {
   --radius: 0.625rem;
 
-  /* Light */
-  --background: #e0e1dd;
-  --foreground: #0d1b2a;
+  --background: #ffffff;
+  --foreground: #000000;
 
-  --primary: #415a77;
-  --primary-foreground: #e0e1dd;
+  --primary: #333333;
+  --primary-foreground: #ffffff;
 
-  --secondary: #778da9;
-  --secondary-foreground: #0d1b2a;
+  --secondary: #666666;
+  --secondary-foreground: #ffffff;
 
-  --accent: #1b263b;
-  --accent-foreground: #e0e1dd;
+  --accent: #222222;
+  --accent-foreground: #ffffff;
 
-  --border: #cfd3d6;
-  --input: #cfd3d6;
-  --ring: #7a8aa0;
+  --muted: #cccccc;
+  --muted-foreground: #000000;
 
-  /* If you use these shadcn surfaces, alias them: */
+  --border: #999999;
+  --input: #bbbbbb;
+  --ring: #555555;
+
   --card: var(--background);
   --card-foreground: var(--foreground);
   --popover: var(--background);
@@ -34,22 +34,24 @@
 }
 
 .dark {
-  /* Dark */
-  --background: #0d1b2a;
-  --foreground: #e0e1dd;
+  --background: #222222;
+  --foreground: #ffffff;
 
-  --primary: #778da9;
-  --primary-foreground: #0d1b2a;
+  --primary: #cccccc;
+  --primary-foreground: #000000;
 
-  --secondary: #415a77;
-  --secondary-foreground: #e0e1dd;
+  --secondary: #999999;
+  --secondary-foreground: #000000;
 
-  --accent: #1b263b;
-  --accent-foreground: #e0e1dd;
+  --accent: #eeeeee;
+  --accent-foreground: #000000;
 
-  --border: #223044;
-  --input: #223044;
-  --ring: #8aa0bd;
+  --muted: #444444;
+  --muted-foreground: #ffffff;
+
+  --border: #999999;
+  --input: #555555;
+  --ring: #777777;
 
   --card: var(--background);
   --card-foreground: var(--foreground);
@@ -57,7 +59,6 @@
   --popover-foreground: var(--foreground);
 }
 
-/* Map your CSS vars to Tailwind tokens (v4) */
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -76,6 +77,9 @@
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
 
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
@@ -87,12 +91,163 @@
   --color-popover-foreground: var(--popover-foreground);
 }
 
-/* Base app styles */
 @layer base {
   * {
     @apply border-border outline-ring/50;
+    font-family: monospace;
+    transition: background-color 0.33s ease, color 0.33s ease, border-color 0.33s ease;
+    cursor: none !important;
+  }
+
+  main {
+    position: relative;
+    /* z-index: 10; */
+  }
+
+  .content-layer {
+    position: relative;
+    /* z-index: 10; */
+  }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow-y: hidden;
+    cursor: none !important;
   }
   body {
     @apply bg-background text-foreground;
   }
+}
+
+.navbar-short-borders-bottom {
+  position: relative;
+}
+
+.navbar-short-borders-bottom::before,
+.navbar-short-borders-bottom::after {
+  content: '';
+  position: absolute;
+  top: 90%;
+  height: 10%;
+  border-color: var(--border);
+  border-width: 2px;
+}
+
+.navbar-short-borders-bottom::before {
+  left: 0;
+  border-left-style: solid;
+}
+
+.navbar-short-borders-bottom::after {
+  right: 0;
+  border-right-style: solid;
+}
+
+.navbar-short-borders-top {
+  position: relative;
+}
+
+.navbar-short-borders-top::before,
+.navbar-short-borders-top::after {
+  content: '';
+  position: absolute;
+  top: 0%;
+  height: 5%;
+  border-color: var(--border);
+  border-width: 2px;
+}
+
+.navbar-short-borders-top::before {
+  left: 0;
+  border-left-style: solid;
+  border-top-style: solid;
+}
+
+.navbar-short-borders-top::after {
+  right: 0;
+  border-right-style: solid;
+  border-top-style: solid;
+}
+
+.target-cursor-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: difference;
+  transform: translate(-50%, -50%);
+}
+
+.target-cursor-dot {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 4px;
+  height: 4px;
+  background: #fff;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  will-change: transform;
+}
+
+.target-cursor-corner {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 4px;
+  height: 4px;
+  border: 2px solid #fff;
+  will-change: transform;
+}
+
+.corner-tl {
+  transform: translate(-150%, -150%);
+  border-right: none;
+  border-bottom: none;
+}
+
+.corner-tr {
+  transform: translate(50%, -150%);
+  border-left: none;
+  border-bottom: none;
+}
+
+.corner-br {
+  transform: translate(50%, 50%);
+  border-left: none;
+  border-top: none;
+}
+
+.corner-bl {
+  transform: translate(-150%, 50%);
+  border-right: none;
+  border-top: none;
+}
+
+.cursor-target {
+  pointer-events: auto !important;
+}
+
+
+.dither-container {
+  position: fixed !important;
+  top:0 !important;
+  left:0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  z-index: 0 !important;
+  pointer-events: none !important;
+}
+
+.dither-container canvas {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  pointer-events: auto !important;
 }

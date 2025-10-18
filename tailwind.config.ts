@@ -6,6 +6,7 @@ const config: Config = {
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/lib/**/*.{js,ts,jsx,tsx}"
   ],
   theme: {
     container: {
@@ -16,6 +17,9 @@ const config: Config = {
       },
     },
     extend: {
+      fontFamily: {
+        'mono': ["monospace"],
+      },
       colors: {
         border: "var(--border)",
         input: "var(--input)",
@@ -39,15 +43,15 @@ const config: Config = {
           foreground: "var(--muted-foreground)",
         },
         accent: {
-          DEFAULT: "var(--accent))",
+          DEFAULT: "var(--accent)",
           foreground: "var(--accent-foreground)",
         },
         popover: {
-          DEFAULT: "var(--popover))",
+          DEFAULT: "var(--popover)",
           foreground: "var(--popover-foreground)",
         },
         card: {
-          DEFAULT: "var(--card))",
+          DEFAULT: "var(--card)",
           foreground: "var(--card-foreground)",
         },
       },
