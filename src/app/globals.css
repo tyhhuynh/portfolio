@@ -1,4 +1,5 @@
 @import "tw-animate-css";
+@import "tailwindcss";
 
 @custom-variant dark (&:is(.dark *));
 @tailwind base;
@@ -6,7 +7,40 @@
 @tailwind utilities;
 
 :root {
-  --radius: 0.625rem;
+  /* screen sizes */
+  --screen-xs: 475px;
+  --screen-sm: 640px;
+  --screen-md: 768px;
+  --screen-lg: 1024px;
+  --screen-xl: 1280px;
+  --screen-2xl: 1536px;
+  --screen-3xl: 1920px;
+  --screen-4xl: 2560px;
+  --screen-5xl: 3840px;
+
+  --scale-mobile: 0.8;
+  --scale-tablet: 0.9;
+  --scale-desktop: 1.0;
+  --scale-large: 1.05;
+  --scale-4k: 1.1;
+
+  --container-mobile: 100vw;
+  --container-tablet: 90vw;
+  --container-desktop: min(90vw, 1400px);
+  --container-large: min(85vw, 1600px);
+  --container-4k: min(80vw, 1800px);
+
+  --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+  --text-sm: clamp(0.875rem, 0.8rem + 0.375vw, 1rem);
+  --text-base: clamp(1rem, 0.9rem + 0.5vw, 1.125rem);
+  --text-lg: clamp(1.125rem, 1rem + 0.625vw, 1.25rem);
+  --text-xl: clamp(1.25rem, 1.1rem + 0.75vw, 1.5rem);
+  --text-2xl: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+  --text-3xl: clamp(2rem, 1.7rem + 1.5vw, 3rem);
+  --text-4xl: clamp(2.5rem, 2.2rem + 1.5vw, 4rem);
+  --text-5xl: clamp(3rem, 2.5rem + 1.5vw, 5rem);
+
+  --radius: 0.5rem;
 
   --background: #ffffff;
   --foreground: #000000;
@@ -27,10 +61,10 @@
   --input: #bbbbbb;
   --ring: #555555;
 
-  --card: var(--background);
+  /* --card: var(--background);
   --card-foreground: var(--foreground);
   --popover: var(--background);
-  --popover-foreground: var(--foreground);
+  --popover-foreground: var(--foreground); */
 }
 
 .dark {
@@ -53,13 +87,18 @@
   --input: #555555;
   --ring: #777777;
 
-  --card: var(--background);
+  /* --card: var(--background);
   --card-foreground: var(--foreground);
   --popover: var(--background);
-  --popover-foreground: var(--foreground);
+  --popover-foreground: var(--foreground); */
 }
 
-@theme inline {
+@theme {
+  --color-*: initial;
+  --font-size-*: initial;
+  --spacing-*: initial;
+  --breakpoint-*: initial;
+
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -84,11 +123,10 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
 
-  /* Optional surfaces if you use them */
-  --color-card: var(--card);
+  /* --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
   --color-popover: var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
+  --color-popover-foreground: var(--popover-foreground); */
 }
 
 @layer base {

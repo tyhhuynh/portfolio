@@ -1,10 +1,11 @@
-import { Me } from "../../components/home/me";
-import { Intro } from "../../components/home/intro";
-import { About } from "../../components/home/about";
-import { Links } from "../../components/home/links";
+import Link from "next/link";
+import { Me } from "@/components/home/me";
+import { Intro } from "@/components/home/intro";
+import { About } from "@/components/home/about";
+import { Links } from "@/components/home/links";
 import { Wrench } from "lucide-react";
 import { button, buttonCx } from "@/lib/button";
-import Link from "next/link";
+import { Tooltip, TooltipContent, TooltipTrigger, TooltipProvider } from "@/components/shared/ui/tooltip";
 
 
 export default function HomePage() {
@@ -21,13 +22,23 @@ export default function HomePage() {
       </div>
 
       <div className="fixed bottom-[4rem] right-[8rem]">
-        <Link
-          href="/workshop"
-          className={buttonCx({
-            className: "flex items-center gap-[0.5rem] text-[1.25rem] w-[16rem] h-[4rem] no-underline hover:underline cursor-target"})}>
-          <Wrench className="size-[2rem]" />
-          workshop
-        </Link>
+        {/* <TooltipProvider> */}
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Link
+                href="/workshop"
+                className={buttonCx({
+                  className: "flex items-center gap-[0.5rem] text-[1.25rem] w-[16rem] h-[4rem] no-underline hover:underline cursor-target"})}>
+                <Wrench className="size-[2rem]" />
+                workshop
+              </Link>
+            </TooltipTrigger>
+            <TooltipContent
+              >
+              <p>[description of workshop]</p>
+            </TooltipContent>
+          </Tooltip>
+        {/* </TooltipProvider> */}
       </div>
     </div>
   );
