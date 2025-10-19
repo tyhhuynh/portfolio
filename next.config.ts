@@ -1,7 +1,5 @@
 import type { NextConfig } from "next";
 
-const nextConfig: NextConfig = {
-  // Turbopack will auto-detect the project root
-};
+const nextConfig: NextConfig = {};
 
 export default nextConfig;

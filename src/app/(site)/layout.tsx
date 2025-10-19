@@ -10,6 +10,12 @@ export const metadata: Metadata = {
   title: "Tyler Huynh",
   icons: {
     icon: "/favicon.ico",
+  },
+  viewport: {
+    width: "device-width",
+    initialScale:  1,
+    maximumScale: 5,
+    userScalable: true,
   }
 };
 
@@ -28,7 +34,7 @@ export default function RootLayout({
           
           <TargetCursor hideDefaultCursor={true} />
             <Navbar />
-            <main className="min-h-screen flex items-start justify-center pt-[8rem] px-safe relative z-10 pointer-events-none">
+            <main className="min-h-screen flex items-start justify-center px-safe relative pointer-events-none">
               <div className="max-w-7xl">
                 {children}
               </div>
