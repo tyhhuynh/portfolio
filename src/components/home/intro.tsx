@@ -1,12 +1,20 @@
-"use client";
+'use client';
 
-import { box } from "@/lib/box";
-import DecryptedText from "../shared/ui/DecryptedText";
+import { box } from '@/lib/box';
+import DecryptedText from '../shared/ui/DecryptedText';
 
 export function Intro() {
   return (
-    <div className={box({ surface: "muted", className: "justify-start my-[4rem]" })}>
-      <h1 className="border-t-1 text-[3rem] mx-auto px-[0.75rem]">
+    <div
+      className={box({
+        surface: 'muted',
+        className: 'justify-start my-[4rem]',
+      })}
+    >
+      <h1
+        className="border-t-1 mx-auto px-[0.75rem] font-bold"
+        style={{ fontSize: 'var(--text-name)' }}
+      >
         <DecryptedText
           text="tyler hao huynh"
           speed={50}
@@ -14,9 +22,9 @@ export function Intro() {
           sequential={true}
           revealDirection="start"
           animateOn="view"
-          />
+        />
       </h1>
-      <h2 className="text-[2rem] m-auto">
+      <h2 className="text-[2rem] m-auto font-bold">
         <DecryptedText
           text="software engineer"
           speed={50}
@@ -24,7 +32,7 @@ export function Intro() {
           sequential={true}
           revealDirection="start"
           animateOn="view"
-          />
+        />
       </h2>
       <p className="border-b-1 navbar-short-borders-bottom text-[1.33rem] px-[1.75rem] pb-[1rem]">
         <DecryptedText
@@ -34,8 +42,8 @@ export function Intro() {
           sequential={true}
           revealDirection="start"
           animateOn="view"
-          />
+        />
       </p>
     </div>
-  )
+  );
 }
