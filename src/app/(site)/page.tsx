@@ -10,13 +10,13 @@ import { Tooltip, TooltipContent, TooltipTrigger, TooltipProvider } from "@/comp
 
 export default function HomePage() {
   return (
-    <div className="flex flex-col justify-end gap-[1rem]">
-      <div className="flex flex-row justify-evenly items-center pt-[var(--spacing-xl)]"> 
+    <div className="flex flex-col gap-[var(--spacing-lg)] h-[screen] overflow-hidden"> 
+      <div className="flex flex-row flex-wrap justify-evenly items-center pt-[var(--spacing-xl)]"> 
         <Me />
         <Intro />
       </div>
 
-      <div>
+      <div className="flex flex-col gap-[var(--spacing-md)]">
         <About />
         <Links />
       </div>
