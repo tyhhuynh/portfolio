@@ -5,13 +5,13 @@ import { box } from "@/lib/box";
 
 export function About() {
   return (
-    <div className={box({ // configure box
+    <div className={box({
       surface: "muted",
       paddingX: "lg",
       paddingY: "md",
+      width: "default",
       gap: "lg",
       items: "stretch",
-      className: "w-full max-w-[52rem]" // decide on width
     })}>
 
       <h2 className="border-b-1 navbar-short-borders-bottom px-[var(--spacing-md)] text-action">

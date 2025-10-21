@@ -42,10 +42,10 @@ export const box = cva(
 
       width: {
         auto: "w-auto",
-        content: "max-w-prose",
-        narrow: "max-w-[40rem]",
-        default: "max-w-[56rem]",
-        wide: "max-w-[72rem]",
+        // content: "max-w-prose",
+        // narrow: "max-w-[40rem]",
+        default: "max-w-responsive",
+        // wide: "max-w-[72rem]",
         full: "w-full max-w-none",
       },
 

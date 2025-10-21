@@ -12,7 +12,7 @@ export default function HomePage() {
   return (
     <div className="flex flex-col gap-[var(--spacing-lg)] h-[screen] overflow-hidden">
 
-      <div className="flex flex-row flex-wrap justify-evenly items-center pt-[var(--spacing-xl)]"> 
+      <div className="flex flex-row flex-wrap justify-evenly items-center pt-[var(--spacing-lg)]"> 
         <Me />
         <Intro />
       </div>
