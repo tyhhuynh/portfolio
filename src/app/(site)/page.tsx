@@ -10,7 +10,8 @@ import { Tooltip, TooltipContent, TooltipTrigger, TooltipProvider } from "@/comp
 
 export default function HomePage() {
   return (
-    <div className="flex flex-col gap-[var(--spacing-lg)] h-[screen] overflow-hidden"> 
+    <div className="flex flex-col gap-[var(--spacing-lg)] h-[screen] overflow-hidden">
+
       <div className="flex flex-row flex-wrap justify-evenly items-center pt-[var(--spacing-xl)]"> 
         <Me />
         <Intro />
@@ -21,12 +22,7 @@ export default function HomePage() {
         <Links />
       </div>
 
-      <div 
-        className="fixed z-50 pointer-events-auto"
-        style={{
-          right: `calc(env(safe-area-inset-right, 0px) + 3*var(--spacing-xl))`,
-          bottom: `calc(env(safe-area-inset-bottom, 0px) + 2*var(--spacing-lg))`,
-        }}>
+      <div className="absolute bottom-[var(--spacing-lg)] right-[var(--spacing-xl)] z-50 pointer-events-auto">
         {/* <TooltipProvider> */}
           <Tooltip>
             <TooltipTrigger asChild>
@@ -52,6 +48,7 @@ export default function HomePage() {
           </Tooltip>
         {/* </TooltipProvider> */}
       </div>
+      
     </div>
   );
 }
