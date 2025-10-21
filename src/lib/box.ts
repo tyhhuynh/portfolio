@@ -3,7 +3,7 @@ import { clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 
 export const box = cva(
-  // Base shape/elevation + default surface
+
   "rounded-md border-0",
   {
     variants: {
@@ -60,9 +60,11 @@ export const box = cva(
       
       justify: {
         start: "justify-start",
+        end: "justify-end",
         center: "justify-center",
         between: "justify-between",
-        end: "justify-end",
+        around: "justify-around",
+        even: "justify-evenly"
       },
 
       items: {

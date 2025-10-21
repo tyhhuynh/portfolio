@@ -29,23 +29,29 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="">
+      <body className="h-screen flex flex-col">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          
           <div className="fixed inset-0 z-0">
             {/* <ThemeDither /> */}
           </div>
 
           <TargetCursor hideDefaultCursor={true} />
           <Navbar />
-          <main className="min-h-screen flex items-start justify-center px-safe relative pointer-events-none">
-            <div className="max-w-7xl">{children}</div>
+
+          <main className="relative flex flex-1 items-start justify-center px-safe pointer-events-none">
+            <div className="max-w-9xl"> {/* determine width */}
+              {children}
+            </div>
           </main>
+
           <Toaster
             position="top-center"
             richColors={true}
             duration={3000}
             visibleToasts={3}
           />
+
         </ThemeProvider>
       </body>
     </html>

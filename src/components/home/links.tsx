@@ -23,11 +23,11 @@ export function Links() {
         <div className={box({ 
           surface: "transparent",
           direction: "row",
-          paddingX: "xs", // tbd
-          paddingY: "lg",
           width: "auto", //tbd
-          gap: "lg",
-          justify: "between",
+          gap: "md",
+          justify: "start",
+          items: "stretch",
+          className: "flex-wrap"
         })}>
 
             <button
@@ -35,12 +35,12 @@ export function Links() {
               className={button({ 
                 surface: "unselected", 
                 // minHeight: "sm",
-                width: "xl",
+                // width: "xl",
                 fontSize: "md",
                 padding: "sm",
                 gap: "sm",
                 // flex items-center gap-[0.5rem] py-[0.25rem] w-[12rem] text-[1.5rem]
-                className: "flex items-center cursor-target" 
+                className: "flex flex-1 items-center cursor-target" 
               })}>
               <Linkedin className="size-[var(--spacing-lg)]"/> linkedin
             </button>
@@ -49,12 +49,10 @@ export function Links() {
               onClick={() => window.open("https://www.github.com/tyhhuynh")}
               className={button({ 
                 surface: "unselected",
-                // minHeight: "lg",
-                width: "xl",
                 fontSize: "md",
                 padding: "sm",
                 gap: "sm", 
-                className: "flex items-center cursor-target" 
+                className: "flex flex-1 items-center cursor-target" 
               })}>
               <Github className="size-[var(--spacing-lg)]"/> github
             </button>
@@ -63,12 +61,10 @@ export function Links() {
               onClick={handleCopy}
               className={button({ 
                 surface: "unselected", 
-                // minHeight: "lg",
-                width: "xl",
                 fontSize: "md",
                 padding: "sm",
                 gap: "sm",
-                className: "flex items-center cursor-target" 
+                className: "flex flex-1 items-center cursor-target" 
               })}>
               <Mail className="size-[var(--spacing-lg)]"/> email
             </button>
@@ -77,12 +73,10 @@ export function Links() {
               onClick={() => window.open("/tyhuynh_resume.pdf")}
               className={button({ 
                 surface: "unselected", 
-                // minHeight: "lg",
-                width: "xl",
                 fontSize: "md",
                 padding: "sm",
                 gap: "sm",
-                className: "flex items-center cursor-target" 
+                className: "flex flex-1 items-center cursor-target" 
               })}>
               <FileUser className="size-[var(--spacing-lg)]"/>resume
             </button>

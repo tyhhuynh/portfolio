@@ -34,7 +34,10 @@ export function ContactDialog() {
         <button
           className={buttonCx({
             surface: "unselected",
-            className: "w-[16rem] text-[1.33rem] px-[3rem] py-[0.33rem] ml-[1rem] mr-[1rem] no-underline hover:underline cursor-target"
+            minHeight: "lg",
+            fontSize: "md",
+            padding: "xs",
+            className: "flex flex-1 no-underline hover:underline cursor-target"
           })}
         >
           contact

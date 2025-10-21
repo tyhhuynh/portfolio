@@ -4,6 +4,7 @@ import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { Moon, Sun } from "lucide-react";
 import { buttonCx } from "@/lib/button";
+import { boxCx } from "@/lib/box";
 
 export function ThemeButton() {
   const { theme, resolvedTheme, setTheme } = useTheme();
@@ -14,13 +15,20 @@ export function ThemeButton() {
   const isDark = (theme ?? resolvedTheme) === "dark";
 
   return (
-    <button
-      type="button"
-      onClick={() => setTheme(isDark ? "light" : "dark")}
-      className={buttonCx({
-        className: "px-[0.5rem] py-[0.5rem] cursor-target"
+    <div
+      className={boxCx({
+        surface: "transparent",
+        paddingX: "md",
       })}>
-        {isDark ? <Moon className="h-[2rem] w-[2rem]" /> : <Sun className="h-[2rem] w-[2rem]" />}
-    </button>
+      <button
+        type="button"
+        onClick={() => setTheme(isDark ? "light" : "dark")}
+        className={buttonCx({
+          iconSize: "lg",
+          className: "cursor-target"
+        })}>
+          {isDark ? <Moon/> : <Sun />}
+      </button>
+    </div>
   );
 }
