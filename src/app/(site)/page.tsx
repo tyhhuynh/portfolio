@@ -11,7 +11,7 @@ import { Tooltip, TooltipContent, TooltipTrigger, TooltipProvider } from "@/comp
 export default function HomePage() {
   return (
     <div className="flex flex-col justify-end gap-[1rem]">
-      <div className="flex flex-row items-stretch"> 
+      <div className="flex flex-row justify-evenly items-center pt-[var(--spacing-xl)]"> 
         <Me />
         <Intro />
       </div>
@@ -21,15 +21,27 @@ export default function HomePage() {
         <Links />
       </div>
 
-      <div className="fixed bottom-[4rem] right-[8rem]">
+      <div 
+        className="fixed z-50 pointer-events-auto"
+        style={{
+          right: `calc(env(safe-area-inset-right, 0px) + 3*var(--spacing-xl))`,
+          bottom: `calc(env(safe-area-inset-bottom, 0px) + 2*var(--spacing-lg))`,
+        }}>
         {/* <TooltipProvider> */}
           <Tooltip>
             <TooltipTrigger asChild>
               <Link
                 href="/workshop"
                 className={buttonCx({
-                  className: "flex items-center gap-[0.5rem] text-[1.25rem] w-[16rem] h-[4rem] no-underline hover:underline cursor-target"})}>
-                <Wrench className="size-[2rem]" />
+                  surface: "primary",
+                  minHeight: "lg",
+                  width: "xxl",
+                  fontSize: "md",
+                  padding: "md",
+                  gap: "md",
+                  className: "no-underline hover:underline cursor-target"
+                })}>
+                <Wrench className="size-[var(--spacing-lg)]" />
                 workshop
               </Link>
             </TooltipTrigger>

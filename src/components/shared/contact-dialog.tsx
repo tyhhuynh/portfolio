@@ -33,7 +33,7 @@ export function ContactDialog() {
       <DialogTrigger asChild>
         <button
           className={buttonCx({
-            variant: "unselected",
+            surface: "unselected",
             className: "w-[16rem] text-[1.33rem] px-[3rem] py-[0.33rem] ml-[1rem] mr-[1rem] no-underline hover:underline cursor-target"
           })}
         >
@@ -79,7 +79,7 @@ export function ContactDialog() {
             <button
               type="submit"
               className={buttonCx({
-                variant: "primary",
+                surface: "primary",
                 className: "text-[2rem] w-[16rem] h-[3rem] cursor-target"
               })}
             >

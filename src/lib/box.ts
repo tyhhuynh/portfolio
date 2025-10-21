@@ -8,7 +8,6 @@ export const box = cva(
   {
     variants: {
 
-      // Surface colors (theme-aware)
       surface: {
         card: "bg-card text-card-foreground",
         popover: "bg-popover text-popover-foreground",
@@ -18,18 +17,45 @@ export const box = cva(
         transparent: "bg-transparent text-foreground"
       },
 
-      // Internal padding scale
-      padding: {
-        default: "p-[0.5rem]",
-        custom: "p-[0rem]"
-      },
-
       layout: { flex: "flex" },
 
-      // Flex-only variants
       direction: {
         row: "flex-row",
         col: "flex-col",
+      },
+
+      paddingX: {
+        xs: "px-[var(--spacing-xs)]",
+        sm: "px-[var(--spacing-sm)]",
+        md: "px-[var(--spacing-md)]",
+        lg: "px-[var(--spacing-lg)]",
+        xl: "px-[var(--spacing-xl)]",
+      },
+
+      paddingY: {
+        xs: "py-[var(--spacing-xs)]",
+        sm: "py-[var(--spacing-sm)]",
+        md: "py-[var(--spacing-md)]",
+        lg: "py-[var(--spacing-lg)]",
+        xl: "py-[var(--spacing-xl)]",
+      },
+
+      width: {
+        auto: "w-auto",
+        content: "max-w-prose",
+        narrow: "max-w-[40rem]",
+        default: "max-w-[56rem]",
+        wide: "max-w-[72rem]",
+        full: "w-full max-w-none",
+      },
+
+      gap: {
+        none: "gap-0",
+        xs: "gap-[var(--spacing-xs)]",
+        sm: "gap-[var(--spacing-sm)]",
+        md: "gap-[var(--spacing-md)]",
+        lg: "gap-[var(--spacing-lg)]",
+        xl: "gap-[var(--spacing-xl)]",
       },
       
       justify: {
@@ -45,25 +71,15 @@ export const box = cva(
         end: "items-end",
         stretch: "items-stretch",
       },
-
-      // spacing for flex children
-      gap: {
-        none: "gap-0",
-        sm: "gap-[2px]",
-        default: "gap-[2px]",
-        lg: "gap-[0.5rem]",
-      },
-
     },
 
     defaultVariants: {
       surface: "secondary",
-      padding: "default",
       layout: "flex",
       direction: "col",
+      gap: "sm",
       justify: 'between',
-      items: "start",
-      gap: "default",
+      items: "start"
     },
   }
 );

@@ -21,43 +21,70 @@ export function Links() {
 
     return (
         <div className={box({ 
-            surface: "transparent",
-            direction: "row",
-            justify: "center",
-            padding: "custom",
-            gap: "none",
-            className: "max-w-[56rem] m-[0rem] py-[1rem] gap-x-[2rem]"})}>
+          surface: "transparent",
+          direction: "row",
+          paddingX: "xs", // tbd
+          paddingY: "lg",
+          width: "auto", //tbd
+          gap: "lg",
+          justify: "between",
+        })}>
 
             <button
               onClick={() => window.open("https://www.linkedin.com/in/tyhhuynh")}
               className={button({ 
-                variant: "unselected", 
-                className: "flex items-center gap-[0.5rem] py-[0.25rem] w-[12rem] text-[1.5rem] cursor-target" })}>
-              <Linkedin className="size-[2rem]"/> linkedin
+                surface: "unselected", 
+                // minHeight: "sm",
+                width: "xl",
+                fontSize: "md",
+                padding: "sm",
+                gap: "sm",
+                // flex items-center gap-[0.5rem] py-[0.25rem] w-[12rem] text-[1.5rem]
+                className: "flex items-center cursor-target" 
+              })}>
+              <Linkedin className="size-[var(--spacing-lg)]"/> linkedin
             </button>
 
             <button
               onClick={() => window.open("https://www.github.com/tyhhuynh")}
               className={button({ 
-                variant: "unselected", 
-                className: "flex items-center gap-[0.5rem] py-[0.25rem] w-[12rem] text-[1.5rem] cursor-target" })}>
-              <Github className="size-[2rem]"/> github
+                surface: "unselected",
+                // minHeight: "lg",
+                width: "xl",
+                fontSize: "md",
+                padding: "sm",
+                gap: "sm", 
+                className: "flex items-center cursor-target" 
+              })}>
+              <Github className="size-[var(--spacing-lg)]"/> github
             </button>
 
             <button
               onClick={handleCopy}
               className={button({ 
-                variant: "unselected", 
-                className: "flex items-center gap-[0.5rem] py-[0.25rem] w-[12rem] text-[1.5rem] cursor-target" })}>
-              <Mail className="size-[2rem]"/> email
+                surface: "unselected", 
+                // minHeight: "lg",
+                width: "xl",
+                fontSize: "md",
+                padding: "sm",
+                gap: "sm",
+                className: "flex items-center cursor-target" 
+              })}>
+              <Mail className="size-[var(--spacing-lg)]"/> email
             </button>
 
             <button
               onClick={() => window.open("/tyhuynh_resume.pdf")}
               className={button({ 
-                variant: "unselected", 
-                className: "flex items-center gap-[0.5rem] py-[0.25rem] w-[12rem] text-[1.5rem] cursor-target" })}>
-              <FileUser className="size-[2rem]"/>resume
+                surface: "unselected", 
+                // minHeight: "lg",
+                width: "xl",
+                fontSize: "md",
+                padding: "sm",
+                gap: "sm",
+                className: "flex items-center cursor-target" 
+              })}>
+              <FileUser className="size-[var(--spacing-lg)]"/>resume
             </button>
         </div>
     )

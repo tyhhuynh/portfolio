@@ -36,16 +36,15 @@ export function TimeDateBox() {
     <div
       className={box({
         surface: 'transparent',
-        padding: 'custom',
-        className: 'text-[1.25rem]',
+        className: 'text-body',
       })}
     >
       <span className="flex items-center gap-[0.5rem]">
-        <Clock className="size-[1.25rem]" />
+        <Clock className="size-[var(--spacing-md)]" />
         {time}
       </span>
       <span className="flex items-center gap-[0.5rem]">
-        <MapPin className="size-[1.25rem]" />
+        <MapPin className="size-[var(--spacing-md)]" />
         thousand oaks, ca
       </span>
     </div>
