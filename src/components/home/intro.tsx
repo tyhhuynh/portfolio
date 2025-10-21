@@ -13,9 +13,9 @@ export function Intro() {
         gap: "lg",
         justify: "center",
         className: "my-[var(--spacing-xl)]",
-      })}
-    >
-      <h1 className="border-t-1 navbar-short-borders-top mx-auto px-[var(--spacing-md)] text-name">
+      })}>
+        
+      <h1 className="w-full border-t-1 navbar-short-borders-top text-center text-name">
         <DecryptedText 
         text="tyler hao huynh" 
         speed={50} 

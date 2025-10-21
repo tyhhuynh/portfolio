@@ -38,7 +38,7 @@ export function TimeDateBox() {
         surface: "transparent",
         gap: "none",
         paddingX: "md",
-        className: "text-body",
+        className: "text-caption",
       })}
     >
       <span className="flex items-center gap-[var(--spacing-sm)]">

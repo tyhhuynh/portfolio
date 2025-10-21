@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { boxCx } from "@/lib/box";
 import { buttonCx } from "@/lib/button";
 import { TimeDateBox } from "@/components/shared/time-date";
 import { ThemeButton } from "@/components/shared/theme-buttom";
@@ -18,43 +19,47 @@ export function Navbar({ className }: { className?: string }) {
   ];
 
   return (
-    <nav className={"flex w-[90%] mx-auto border-b-1 navbar-short-borders-bottom bg-background/80 backdrop-blur pt-[var(--spacing-md)]"}>
-      {/* <div className="flex"> */}
+    <div
+      className={boxCx({
+        className: "flex w-[95%] mx-auto bg-background/67 backdrop-blur py-[var(--spacing-md)]",
+      })}>
+      <nav className={"flex w-[95%] mx-auto border-b-1 navbar-short-borders-bottom"}>
+        
+          {/* l-section: time & location */}
+          <div className="flex w-1/5 items-center pb-[var(--spacing-xs)]">
+            <TimeDateBox />
+          </div>
 
-        {/* l-section: time & location */}
-        <div className="flex w-1/5 items-center pb-[var(--spacing-xs)]">
-          <TimeDateBox />
+          {/* center section: home, exp, projects buttons + contact dialog button */}
+          <div className="flex flex-1 items-center gap-[var(--spacing-lg)]">
+            {navItems.map((item) => {
+              const isActive = pathname === item.href;
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={buttonCx({
+                    surface: isActive ? "selected" : "unselected",
+                    minHeight: "lg",
+                    fontSize: "md",
+                    padding: "xs",
+                    className: "flex flex-1 justify-center no-underline hover:underline cursor-target"
+                  })}
+                  aria-current={isActive ? "page" : undefined}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
+            <ContactDialog />
+          </div>
+
+          {/* R-section: toggle theme button */}
+          <div className="flex w-1/5 items-end justify-end pb-[var(--spacing-sm)]">
+            <ThemeButton />
+
         </div>
-
-        {/* center section: home, exp, projects buttons + contact dialog button */}
-        <div className="flex flex-1 items-center gap-[var(--spacing-lg)]">
-          {navItems.map((item) => {
-            const isActive = pathname === item.href;
-            return (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={buttonCx({
-                  surface: isActive ? "selected" : "unselected",
-                  minHeight: "lg",
-                  fontSize: "md",
-                  padding: "xs",
-                  className: "flex flex-1 justify-center no-underline hover:underline cursor-target"
-                })}
-                aria-current={isActive ? "page" : undefined}
-              >
-                {item.label}
-              </Link>
-            );
-          })}
-          <ContactDialog />
-        </div>
-
-        {/* R-section: toggle theme button */}
-        <div className="flex w-1/5 items-end justify-end pb-[var(--spacing-sm)]">
-          <ThemeButton />
-        {/* </div> */}
-      </div>
-    </nav>
+      </nav>
+    </div>
   );
 }

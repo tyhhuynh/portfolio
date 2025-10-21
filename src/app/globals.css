@@ -42,8 +42,6 @@
   --spacing-lg: clamp(1rem, calc(0.8vw + 0.4rem), 4rem);                /* 16-64px */
   --spacing-xl: clamp(2rem, calc(1.6vw + 0.8rem), 8rem);                /* 32-128px */
 
-  /* --button-w- */
-
   --button-padding: clamp(0.25rem, calc(0.2vw + 0.1rem), 1rem);         /* 4-16px */
   --button-gap: clamp(0.25rem, calc(0.2vw + 0.1rem), 1rem);             /* 4-16px */
   --container-padding: clamp(1rem, calc(0.8vw + 0.4rem), 4rem);         /* 16-64px */
@@ -65,7 +63,7 @@
   --muted: #bbbbbb;
   --muted-foreground: #000000;
 
-  --border: #999999;
+  --border: #666666;
   --input: #bbbbbb;
   --ring: #555555;
 
@@ -299,26 +297,32 @@
 }
 
 @layer utilities {
+  
   .text-name {
     font-size: var(--text-name);
     font-weight: 800;
   }
+
   .text-title {
     font-size: var(--text-title);
     font-weight: 700;
   }
+
   .text-action {
     font-size: var(--text-action);
     font-weight: 500;
   }
+
   .text-body {
     font-size: var(--text-body);
-    /* line-height: */
-
   }
+
   .text-caption {
     font-size: var(--text-caption);
-    /* line-height: */
     opacity: 0.8;
+  }
+
+  .max-w-responsive {
+    max-width: clamp(30rem, 50vw, 92rem)
   }
 }
