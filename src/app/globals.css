@@ -30,11 +30,23 @@
   --container-large: min(85vw, 1600px);
   --container-4k: min(80vw, 1800px);
 
-  --text-name: clamp(1.5rem, calc(1vw + 2rem), 3rem);
-  /* --text-title:
-  --text-action:
-  --text-body:
-  --text-caption: */
+  --text-name: clamp(1.5rem, calc(1.25vw + 1rem), 4rem);                /* 24-64px */
+  --text-title: clamp(1.25rem, calc(0.8 * (1.25vw + 1rem)), 3.2rem);    /* 20-51.2px */
+  --text-action: clamp(1.125rem, calc(0.65 * (1.25vw + 1rem)), 2.6rem); /* 18-41.6px */
+  --text-body: clamp(1rem, calc(0.5 * (1.25vw + 1rem)), 2rem);          /* 16-32px */
+  --text-caption: clamp(0.875rem, calc(0.4 * (1.25vw + 1rem)), 1.6rem); /* 14-25.6px */
+
+  --spacing-xs: clamp(0.125rem, calc(0.1vw + 0.05rem), 0.5rem);         /* 2-8px */
+  --spacing-sm: clamp(0.25rem, calc(0.2vw + 0.1rem), 1rem);             /* 4-16px */
+  --spacing-md: clamp(0.5rem, calc(0.4vw + 0.2rem), 2rem);              /* 8-32px */
+  --spacing-lg: clamp(1rem, calc(0.8vw + 0.4rem), 4rem);                /* 16-64px */
+  --spacing-xl: clamp(2rem, calc(1.6vw + 0.8rem), 8rem);                /* 32-128px */
+
+  /* --button-w- */
+
+  --button-padding: clamp(0.25rem, calc(0.2vw + 0.1rem), 1rem);         /* 4-16px */
+  --button-gap: clamp(0.25rem, calc(0.2vw + 0.1rem), 1rem);             /* 4-16px */
+  --container-padding: clamp(1rem, calc(0.8vw + 0.4rem), 4rem);         /* 16-64px */
 
   --radius: 0.5rem;
 
@@ -129,8 +141,7 @@
   * {
     @apply border-border outline-ring/50;
     font-family: monospace;
-    transition: background-color 0.33s ease, color 0.33s ease,
-      border-color 0.33s ease;
+    transition: background-color 0.33s ease, color 0.33s ease, border-color 0.33s ease;
     cursor: none !important;
   }
 
@@ -285,4 +296,29 @@
   height: 100% !important;
   object-fit: cover !important;
   pointer-events: auto !important;
+}
+
+@layer utilities {
+  .text-name {
+    font-size: var(--text-name);
+    font-weight: 800;
+  }
+  .text-title {
+    font-size: var(--text-title);
+    font-weight: 700;
+  }
+  .text-action {
+    font-size: var(--text-action);
+    font-weight: 500;
+  }
+  .text-body {
+    font-size: var(--text-body);
+    /* line-height: */
+
+  }
+  .text-caption {
+    font-size: var(--text-caption);
+    /* line-height: */
+    opacity: 0.8;
+  }
 }
