@@ -4,7 +4,7 @@ import { Intro } from "@/components/home/intro";
 import { About } from "@/components/home/about";
 import { Links } from "@/components/home/links";
 import { Wrench } from "lucide-react";
-import { button, buttonCx } from "@/lib/button";
+import { buttonCx } from "@/lib/button";
 import { Tooltip, TooltipContent, TooltipTrigger, TooltipProvider } from "@/components/shared/ui/tooltip";
 
 
@@ -22,8 +22,7 @@ export default function HomePage() {
         <Links />
       </div>
 
-      <div className="absolute bottom-[var(--spacing-lg)] right-[var(--spacing-xl)] z-50 pointer-events-auto">
-        {/* <TooltipProvider> */}
+      <div className="absolute bottom-[calc(var(--spacing-lg)*2)] right-[calc(var(--spacing-xl)*2)] z-50 pointer-events-auto">
           <Tooltip>
             <TooltipTrigger asChild>
               <Link
@@ -41,12 +40,10 @@ export default function HomePage() {
                 workshop
               </Link>
             </TooltipTrigger>
-            <TooltipContent
-              >
-              <p>[description of workshop]</p>
-            </TooltipContent>
+            {/* <TooltipContent sideOffset={8} >
+              <p>collection of prototypes, scraps, and digital toys</p>
+            </TooltipContent> */}
           </Tooltip>
-        {/* </TooltipProvider> */}
       </div>
       
     </div>

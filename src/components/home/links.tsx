@@ -1,8 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { box, boxCx } from "@/lib/box";
-import { button, buttonCx } from "@/lib/button";
+import { boxCx } from "@/lib/box";
+import { buttonCx } from "@/lib/button";
 import { Github, Linkedin, Mail, FileUser } from "lucide-react";
 import { toast } from "sonner";
 
@@ -20,7 +19,7 @@ export function Links() {
     };
 
     return (
-        <div className={box({ 
+        <div className={boxCx({ 
           surface: "transparent",
           direction: "row",
           width: "auto", //tbd
@@ -32,7 +31,7 @@ export function Links() {
 
             <button
               onClick={() => window.open("https://www.linkedin.com/in/tyhhuynh")}
-              className={button({ 
+              className={buttonCx({ 
                 surface: "unselected", 
                 // minHeight: "sm",
                 // width: "xl",
@@ -47,7 +46,7 @@ export function Links() {
 
             <button
               onClick={() => window.open("https://www.github.com/tyhhuynh")}
-              className={button({ 
+              className={buttonCx({ 
                 surface: "unselected",
                 fontSize: "md",
                 padding: "sm",
@@ -59,7 +58,7 @@ export function Links() {
 
             <button
               onClick={handleCopy}
-              className={button({ 
+              className={buttonCx({ 
                 surface: "unselected", 
                 fontSize: "md",
                 padding: "sm",
@@ -71,7 +70,7 @@ export function Links() {
 
             <button
               onClick={() => window.open("/tyhuynh_resume.pdf")}
-              className={button({ 
+              className={buttonCx({ 
                 surface: "unselected", 
                 fontSize: "md",
                 padding: "sm",
