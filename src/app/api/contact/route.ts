@@ -1,9 +1,18 @@
 import { Resend } from 'resend';
 import { NextRequest, NextResponse } from 'next/server';
 
-const resend = new Resend(process.env.RESEND_API_KEY || '');
-
 export async function POST(request: NextRequest) {
+
+  const resend = new Resend(process.env.RESEND_API_KEY);
+
+  if (!process.env.RESEND_API_KEY) {
+    console.error('RESEND_API_KEY is not set');
+    return NextResponse.json(
+      { error: 'Server configuration error' },
+      { status: 500 }
+    );
+  }
+
   try {
     const { name, email, message } = await request.json();
 
@@ -34,7 +43,7 @@ export async function POST(request: NextRequest) {
         <p><strong>Email:</strong> ${email}</p>
         <p><strong>Message:</strong></p>
         <p>${message.replace(/\n/g, '<br>')}</p>
-      `, 
+      `
       // <strong>?
     });
 
