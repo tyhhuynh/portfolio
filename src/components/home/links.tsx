@@ -25,8 +25,8 @@ export function Links() {
           width: "auto", //tbd
           gap: "md",
           justify: "start",
-          items: "stretch",
-          className: "flex-wrap"
+          // items: "even",
+          className: "items-center"
         })}>
 
             <button
@@ -34,7 +34,7 @@ export function Links() {
               className={buttonCx({ 
                 surface: "unselected", 
                 // minHeight: "sm",
-                // width: "xl",
+                width: "xl",
                 fontSize: "md",
                 padding: "sm",
                 gap: "sm",

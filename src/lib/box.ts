@@ -81,7 +81,7 @@ export const box = cva(
       direction: "col",
       gap: "sm",
       justify: 'between',
-      items: "start"
+      // items: "start"
     },
   }
 );

@@ -17,7 +17,7 @@ export default function HomePage() {
         <Intro />
       </div>
 
-      <div className="flex flex-col gap-[var(--spacing-md)]">
+      <div className="flex flex-col flex-wrap items-center gap-[var(--spacing-md)]">
         <About />
         <Links />
       </div>

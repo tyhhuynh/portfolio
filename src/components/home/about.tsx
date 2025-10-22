@@ -11,7 +11,6 @@ export function About() {
       paddingY: "md",
       width: "default",
       gap: "lg",
-      items: "stretch",
     })}>
 
       <h2 className="border-b-1 navbar-short-borders-bottom px-[var(--spacing-md)] text-action">
