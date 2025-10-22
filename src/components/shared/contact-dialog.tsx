@@ -45,7 +45,7 @@ export function ContactDialog() {
       </DialogTrigger>
 
       <DialogContent className="w-[48rem] h-[48rem] justify-center border-1">
-        <DialogTitle className='flex justify-center border-b-1 navbar-short-borders-bottom w-[full] h-[4rem] mx-auto px-[var(--spacing-md)] pt-[var(--spacing-lg)] text-name'>
+        <DialogTitle className="flex justify-center border-b-1 navbar-short-borders-bottom w-[full] h-[clamp(3rem,4vw,5rem)] mx-auto px-[var(--spacing-md)] py-[var(--spacing-lg)] text-name">
           get in touch
         </DialogTitle>
         <form onSubmit={handleSubmit} className="flex flex-col w-[32rem] items-center">
