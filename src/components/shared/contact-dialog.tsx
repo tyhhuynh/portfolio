@@ -9,22 +9,45 @@ import { toast } from "sonner";
 
 export function ContactDialog() {
   const [open, setOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: ""
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsLoading(true);
 
-    toast.error("feature has not been implemented yet!");
-    
-    setFormData({
-      name: "",
-      email: "",
-      message: ""
-    });
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+  
+      const result = await response.json();
+  
+      if (response.ok) {
+        toast.success('message sent successfully!');
+        setOpen(false);
+        setFormData({
+          name: "",
+          email: "",
+          message: ""
+        });
+      } else {
+        toast.error(result.error || 'failed to send message!');
+      }
+    } catch (error) {
+      console.error('ERROR:', error);
+      toast.error('failed to send message. please try again.');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -38,8 +61,7 @@ export function ContactDialog() {
             fontSize: "md",
             padding: "xs",
             className: "flex flex-1 no-underline hover:underline cursor-target"
-          })}
-        >
+          })}>
           contact
         </button>
       </DialogTrigger>
@@ -80,13 +102,14 @@ export function ContactDialog() {
           </div>
             <button
               type="submit"
+              disabled={isLoading}
               className={buttonCx({
                 surface: "primary",
                 width: "full",
                 fontSize: "lg",
                 className: "cursor-target"
               })}>
-            send message
+              {isLoading ? 'sending...' : 'send message'}
             </button>
         </form>
       </DialogContent>
