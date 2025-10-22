@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { button, buttonCx } from "@/lib/button";
+import { buttonCx } from "@/lib/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/shared/ui/dialog";
 import { Input } from "@/components/shared/ui/input";
 import { Textarea } from "@/components/shared/ui/textarea";
@@ -44,25 +44,25 @@ export function ContactDialog() {
         </button>
       </DialogTrigger>
 
-      <DialogContent className="w-[48rem] h-[48rem] justify-center border-0">
-        <DialogTitle className='flex justify-center border-b-1 navbar-short-borders-bottom w-[66%] h-[4rem] mx-auto px-[0.5rem] text-[3rem]'>
+      <DialogContent className="w-[48rem] h-[48rem] justify-center border-1">
+        <DialogTitle className='flex justify-center border-b-1 navbar-short-borders-bottom w-[full] h-[4rem] mx-auto px-[var(--spacing-md)] pt-[var(--spacing-lg)] text-name'>
           get in touch
         </DialogTitle>
         <form onSubmit={handleSubmit} className="flex flex-col w-[32rem] items-center">
           <div className="w-full">
-            <label className="text-[1.5rem]">name</label>
+            <label className="text-action">name</label>
             <Input
               title="name"
-              className="w-full h-[3rem] text-[1.5rem] mb-[1rem] cursor-target"
+              className="w-full h-[3rem] text-action mb-[1rem] cursor-target"
               value={formData.name}
               onChange={(e) => setFormData({...formData, name: e.target.value})}
               required
             />
 
-            <label className="text-[1.5rem]">email</label>
+            <label className="text-action">email</label>
             <Input
               title="email"
-              className="w-full h-[3rem] text-[1.5rem] mb-[1rem] cursor-target"
+              className="w-full h-[3rem] text-action mb-[1rem] cursor-target"
               value={formData.email}
               onChange={(e) => setFormData({...formData, email: e.target.value})}
               required
@@ -70,25 +70,24 @@ export function ContactDialog() {
 
             <Textarea
               title="message"
-              className="h-[20rem] resize-none mb-[1rem] text-[1.5rem] cursor-target"
+              className="h-[20rem] resize-none mb-[1rem] text-body cursor-target"
               placeholder="leave your message here"
               value={formData.message}
               onChange={(e) => setFormData({...formData, message: e.target.value})}
               required
             />
+            
           </div>
-          
-          <div className="flex justify-center">
             <button
               type="submit"
               className={buttonCx({
                 surface: "primary",
-                className: "text-[2rem] w-[16rem] h-[3rem] cursor-target"
-              })}
-            >
-              send message
+                width: "full",
+                fontSize: "lg",
+                className: "cursor-target"
+              })}>
+            send message
             </button>
-          </div>
         </form>
       </DialogContent>
     </Dialog>

@@ -1,11 +1,11 @@
 "use client";
 
-import { box } from "@/lib/box";
+import { boxCx } from "@/lib/box";
 import Image from 'next/image';
 
 export function Me() {
   return (
-    <div className={box({ 
+    <div className={boxCx({ 
       surface: "transparent",
       paddingX: "lg",
       paddingY: "md",

@@ -1,12 +1,12 @@
 'use client';
 
-import { box } from '@/lib/box';
+import { boxCx } from '@/lib/box';
 import DecryptedText from '../shared/ui/DecryptedText';
 
 export function Intro() {
   return (
     <div
-      className={box({
+      className={boxCx({
         surface: 'muted',
         paddingX: "md",
         paddingY: "lg",

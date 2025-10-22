@@ -23,6 +23,7 @@ export const button = cva(
 
       width: {
         auto: "w-auto",
+        full: "w-full",
         sm: "w-[var(--spacing-xl)]",          // ~2rem
         md: "w-[calc(var(--spacing-xl)*2)]",  // ~4rem  
         lg: "w-[calc(var(--spacing-xl)*3)]",  // ~6rem

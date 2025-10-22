@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { box } from '@/lib/box';
+import { boxCx } from '@/lib/box';
 import { Clock, MapPin } from 'lucide-react';
 
 function formatNow() {
@@ -34,18 +34,18 @@ export function TimeDateBox() {
 
   return (
     <div
-      className={box({
+      className={boxCx({
         surface: "transparent",
         gap: "none",
         paddingX: "md",
-        className: "text-caption",
+        className: "text-muted-foreground",
       })}
     >
-      <span className="flex items-center gap-[var(--spacing-sm)]">
+      <span className="flex items-center gap-[var(--spacing-sm)] text-caption">
         <Clock className="size-[var(--spacing-lg)]" />
         {time}
       </span>
-      <span className="flex items-center gap-[var(--spacing-sm)] whitespace-nowrap">
+      <span className="flex items-center gap-[var(--spacing-sm)] text-caption whitespace-nowrap">
         <MapPin className="size-[var(--spacing-lg)]" />
         thousand oaks, ca
       </span>

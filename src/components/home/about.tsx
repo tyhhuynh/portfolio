@@ -1,11 +1,11 @@
 "use client";
 
-import { box } from "@/lib/box";
+import { boxCx } from "@/lib/box";
 
 
 export function About() {
   return (
-    <div className={box({
+    <div className={boxCx({
       surface: "muted",
       paddingX: "lg",
       paddingY: "md",
