@@ -24,8 +24,7 @@ export function ThemeButton() {
         type="button"
         onClick={() => setTheme(isDark ? "light" : "dark")}
         className={buttonCx({
-          iconSize: "lg",
-          className: "cursor-target"
+          iconSize: "lg"
         })}>
           {isDark ? <Moon/> : <Sun />}
       </button>

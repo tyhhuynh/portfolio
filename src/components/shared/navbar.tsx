@@ -43,7 +43,7 @@ export function Navbar({}: { className?: string }) {
                     minHeight: "lg",
                     fontSize: "md",
                     padding: "xs",
-                    className: "flex flex-1 justify-center no-underline hover:underline cursor-target"
+                    className: "flex flex-1 justify-center no-underline hover:underline"
                   })}
                   aria-current={isActive ? "page" : undefined}
                 >

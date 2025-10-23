@@ -3,7 +3,7 @@ import { clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 
 export const button = cva(
-  "inline-flex items-center justify-center border-0 hover:scale-105 focus-visible-ring rounded-md transition-all duration-100",
+  "inline-flex items-center justify-center border-0 hover:scale-105 focus-visible-ring rounded-md transition-all duration-100 cursor-target",
   {
     variants: {
 
@@ -71,11 +71,6 @@ export const button = cva(
 
     defaultVariants: { 
       surface: "primary", 
-      // minHeight: "md",
-      // fontSize: "md",
-      // iconSize: "md",
-      // padding:"sm",
-      // gap: "sm", 
     },
   }
 );

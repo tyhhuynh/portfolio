@@ -22,10 +22,8 @@ export function Links() {
         <div className={boxCx({ 
           surface: "transparent",
           direction: "row",
-          width: "auto", //tbd
+          width: "full",
           gap: "md",
-          justify: "start",
-          items: "stretch",
           className: "flex-wrap"
         })}>
 
@@ -33,13 +31,10 @@ export function Links() {
               onClick={() => window.open("https://www.linkedin.com/in/tyhhuynh")}
               className={buttonCx({ 
                 surface: "unselected", 
-                // minHeight: "sm",
-                // width: "xl",
                 fontSize: "md",
                 padding: "sm",
                 gap: "sm",
-                // flex items-center gap-[0.5rem] py-[0.25rem] w-[12rem] text-[1.5rem]
-                className: "flex flex-1 items-center cursor-target" 
+                className: "flex flex-1 items-center" 
               })}>
               <Linkedin className="size-[var(--spacing-lg)]"/> linkedin
             </button>
@@ -51,7 +46,7 @@ export function Links() {
                 fontSize: "md",
                 padding: "sm",
                 gap: "sm", 
-                className: "flex flex-1 items-center cursor-target" 
+                className: "flex flex-1 items-center" 
               })}>
               <Github className="size-[var(--spacing-lg)]"/> github
             </button>
@@ -63,7 +58,7 @@ export function Links() {
                 fontSize: "md",
                 padding: "sm",
                 gap: "sm",
-                className: "flex flex-1 items-center cursor-target" 
+                className: "flex flex-1 items-center" 
               })}>
               <Mail className="size-[var(--spacing-lg)]"/> email
             </button>
@@ -75,7 +70,7 @@ export function Links() {
                 fontSize: "md",
                 padding: "sm",
                 gap: "sm",
-                className: "flex flex-1 items-center cursor-target" 
+                className: "flex flex-1 items-center" 
               })}>
               <FileUser className="size-[var(--spacing-lg)]"/>resume
             </button>

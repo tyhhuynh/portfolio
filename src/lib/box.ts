@@ -42,11 +42,8 @@ export const box = cva(
 
       width: {
         auto: "w-auto",
-        // content: "max-w-prose",
-        // narrow: "max-w-[40rem]",
         default: "max-w-responsive",
-        // wide: "max-w-[72rem]",
-        full: "w-full max-w-none",
+        full: "w-full max-w-responsive",
       },
 
       gap: {
@@ -81,7 +78,6 @@ export const box = cva(
       direction: "col",
       gap: "sm",
       justify: 'between',
-      items: "start"
     },
   }
 );

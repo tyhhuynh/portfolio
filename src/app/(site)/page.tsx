@@ -17,7 +17,7 @@ export default function HomePage() {
         <Intro />
       </div>
 
-      <div className="flex flex-col gap-[var(--spacing-md)]">
+      <div className="flex flex-col flex-wrap items-center gap-[var(--spacing-md)] px-[var(--spacing-xl)]">
         <About />
         <Links />
       </div>
@@ -34,7 +34,7 @@ export default function HomePage() {
                   fontSize: "md",
                   padding: "md",
                   gap: "md",
-                  className: "no-underline hover:underline cursor-target"
+                  className: "no-underline hover:underline"
                 })}>
                 <Wrench className="size-[var(--spacing-lg)]" />
                 workshop

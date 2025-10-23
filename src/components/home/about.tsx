@@ -9,9 +9,8 @@ export function About() {
       surface: "muted",
       paddingX: "lg",
       paddingY: "md",
-      width: "default",
+      width: "full",
       gap: "lg",
-      items: "stretch",
     })}>
 
       <h2 className="border-b-1 navbar-short-borders-bottom px-[var(--spacing-md)] text-action">
