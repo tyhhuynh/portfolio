@@ -9,7 +9,7 @@ export function About() {
       surface: "muted",
       paddingX: "lg",
       paddingY: "md",
-      width: "default",
+      width: "full",
       gap: "lg",
     })}>
 

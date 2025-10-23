@@ -37,7 +37,7 @@ export function ContactDialog() {
             minHeight: "lg",
             fontSize: "md",
             padding: "xs",
-            className: "flex flex-1 no-underline hover:underline cursor-target"
+            className: "flex flex-1 no-underline hover:underline"
           })}
         >
           contact
@@ -83,8 +83,7 @@ export function ContactDialog() {
               className={buttonCx({
                 surface: "primary",
                 width: "full",
-                fontSize: "lg",
-                className: "cursor-target"
+                fontSize: "lg"
               })}>
             send message
             </button>
