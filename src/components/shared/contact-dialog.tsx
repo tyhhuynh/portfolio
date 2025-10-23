@@ -9,22 +9,45 @@ import { toast } from "sonner";
 
 export function ContactDialog() {
   const [open, setOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: ""
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsLoading(true);
 
-    toast.error("feature has not been implemented yet!");
-    
-    setFormData({
-      name: "",
-      email: "",
-      message: ""
-    });
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+  
+      const result = await response.json();
+  
+      if (response.ok) {
+        toast.success('message sent successfully!');
+        setOpen(false);
+        setFormData({
+          name: "",
+          email: "",
+          message: ""
+        });
+      } else {
+        toast.error(result.error || 'failed to send message!');
+      }
+    } catch (error) {
+      console.error('ERROR:', error);
+      toast.error('failed to send message. please try again.');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -45,7 +68,7 @@ export function ContactDialog() {
       </DialogTrigger>
 
       <DialogContent className="w-[48rem] h-[48rem] justify-center border-1">
-        <DialogTitle className='flex justify-center border-b-1 navbar-short-borders-bottom w-[full] h-[4rem] mx-auto px-[var(--spacing-md)] pt-[var(--spacing-lg)] text-name'>
+        <DialogTitle className="flex justify-center border-b-1 navbar-short-borders-bottom w-[full] h-[clamp(3rem,4vw,5rem)] mx-auto px-[var(--spacing-md)] py-[var(--spacing-lg)] text-name">
           get in touch
         </DialogTitle>
         <form onSubmit={handleSubmit} className="flex flex-col w-[32rem] items-center">
@@ -80,12 +103,14 @@ export function ContactDialog() {
           </div>
             <button
               type="submit"
+              disabled={isLoading}
               className={buttonCx({
                 surface: "primary",
                 width: "full",
-                fontSize: "lg"
+                fontSize: "lg",
+                className: "cursor-target"
               })}>
-            send message
+              {isLoading ? 'sending...' : 'send message'}
             </button>
         </form>
       </DialogContent>

@@ -9,7 +9,7 @@ import { ThemeButton } from "@/components/shared/theme-buttom";
 import { ContactDialog } from "@/components/shared/contact-dialog";
 
 
-export function Navbar({ className }: { className?: string }) {
+export function Navbar({}: { className?: string }) {
   const pathname = usePathname();
 
   const navItems = [
