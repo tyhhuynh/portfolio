@@ -33,7 +33,7 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           
           <div className="fixed inset-0 z-0">
-            {/* <ThemeDither /> */}
+            <ThemeDither />
           </div>
 
           <TargetCursor hideDefaultCursor={true} />

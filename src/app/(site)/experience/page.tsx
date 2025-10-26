@@ -1,32 +1,33 @@
 import { boxCx } from "@/lib/box";
+import { InfoCard } from "@/components/shared/InfoCard";
+import { experiences } from "@/lib/experience";
 
 export default function ExperiencePage() {
   return (
     <div className={boxCx({ 
-      surface: "transparent", 
-      // direction: "col", 
-      paddingY: "md",
-      // width: "full",
+      surface: "transparent",
+      width: "auto",
+      gap: "md",
       items: "center", 
       justify: "start",
-      className: "w-[72rem] h-[36rem] border-1" 
-    })}>
+    })}
+    style={{
+      width: "clamp(20rem, 55vw, 96rem)",
+      maxWidth: "96rem"
+    }}>
+
     {/* title */}
     <div className={boxCx({ 
       surface: "muted", 
-      // direction: "col",
       paddingX: "lg",
       paddingY: "md",
       width: "full",
       items: "start", 
       justify: "start",
-      className: ""
       })}>
         <div className={boxCx({ 
         surface: "transparent", 
-        // direction: "col",
         paddingX: "md",
-        // paddingY: "xs",
         width: "full",
         items: "start", 
         justify: "start",
@@ -36,211 +37,12 @@ export default function ExperiencePage() {
         </div>
     </div>
 
-      {/* client */}
-      <div className={boxCx({ 
-      surface: "muted", 
-      // direction: "col", 
-      // paddingY: "lg",
-      width: "full",
-      items: "center", 
-      justify: "start",
-      className: "border-1"
-      })}>
-        <div className={boxCx({ 
-      surface: "muted", 
-      direction: "row", 
-      // paddingY: "xl",
-      width: "full",
-      items: "center", 
-      justify: "start",
-      className: "border-1"
-        })}>
-          <div className={boxCx({ 
-            surface: "muted", 
-            // direction: "row", 
-            paddingY: "lg",
-            // width: "full",
-            items: "center", 
-            justify: "start",
-            className: "border-1"
-          })}>
-            picture
-          </div>
-
-          <div className={boxCx({ 
-            surface: "muted", 
-            // direction: "row", 
-            paddingY: "lg",
-            width: "full",
-            items: "start", 
-            justify: "start",
-            className: "border-1"
-          })}>
-            client software developer
-          </div>
-
-        </div>
-        <div className={boxCx({ 
-            surface: "muted", 
-            direction: "row", 
-            paddingY: "lg",
-            width: "full",
-            items: "center", 
-            justify: "start",
-            className: "border-1"
-          })}>
-            techstack
-        </div>
-        <div className={boxCx({ 
-            surface: "muted", 
-            direction: "row", 
-            paddingY: "lg",
-            width: "full",
-            items: "center", 
-            justify: "start",
-            className: "border-1"
-          })}>
-            description
-        </div>
-      </div>
-      
-      {/* open-source */}
-      <div className={boxCx({ 
-      surface: "muted", 
-      // direction: "col", 
-      // paddingY: "lg",
-      width: "full",
-      items: "center", 
-      justify: "start",
-      className: "border-1"
-      })}>
-        <div className={boxCx({ 
-      surface: "muted", 
-      direction: "row", 
-      // paddingY: "xl",
-      width: "full",
-      items: "center", 
-      justify: "start",
-      className: "border-1"
-        })}>
-
-          <div className={boxCx({ 
-            surface: "muted", 
-            // direction: "row", 
-            paddingY: "lg",
-            // width: "full",
-            items: "center", 
-            justify: "start",
-            className: "border-1"
-          })}>
-            picture
-          </div>
-
-          <div className={boxCx({ 
-            surface: "muted", 
-            // direction: "row", 
-            paddingY: "lg",
-            width: "full",
-            items: "start", 
-            justify: "start",
-            className: "border-1"
-          })}>
-            open-source software developer
-          </div>
-
-        </div>
-        <div className={boxCx({ 
-            surface: "muted", 
-            direction: "row", 
-            paddingY: "lg",
-            width: "full",
-            items: "center", 
-            justify: "start",
-            className: "border-1"
-          })}>
-            techstack
-          </div>
-          <div className={boxCx({ 
-            surface: "muted", 
-            direction: "row", 
-            paddingY: "lg",
-            width: "full",
-            items: "center", 
-            justify: "start",
-            className: "border-1"
-          })}>
-            description
-          </div>
-      </div>
-
-      {/* iet */}
-      <div className={boxCx({ 
-      surface: "muted", 
-      // direction: "col", 
-      // paddingY: "lg",
-      width: "full",
-      items: "center", 
-      justify: "start",
-      className: "border-1"
-      })}>
-        <div className={boxCx({ 
-      surface: "muted", 
-      direction: "row", 
-      // paddingY: "xl",
-      width: "full",
-      items: "center", 
-      justify: "start",
-      className: "border-1"
-        })}>
-
-          <div className={boxCx({ 
-            surface: "muted", 
-            // direction: "row", 
-            paddingY: "lg",
-            // width: "full",
-            items: "center", 
-            justify: "start",
-            className: "border-1"
-          })}>
-            picture
-          </div>
-
-          <div className={boxCx({ 
-            surface: "muted", 
-            // direction: "row", 
-            paddingY: "lg",
-            width: "full",
-            items: "start", 
-            justify: "start",
-            className: "border-1"
-          })}>
-            IET: jr. computer room consultant
-          </div>
-
-        </div>
-        <div className={boxCx({ 
-            surface: "muted", 
-            direction: "row", 
-            paddingY: "lg",
-            width: "full",
-            items: "center", 
-            justify: "start",
-            className: "border-1"
-          })}>
-            techstack
-          </div>
-          <div className={boxCx({ 
-            surface: "muted", 
-            direction: "row", 
-            paddingY: "lg",
-            width: "full",
-            items: "center", 
-            justify: "start",
-            className: "border-1"
-          })}>
-            description
-          </div>
-      </div>
+    {experiences.map((experience, index) => (
+        <InfoCard 
+        key={index} 
+        data={experience}
+        />
+      ))}
 
     </div>
   );
