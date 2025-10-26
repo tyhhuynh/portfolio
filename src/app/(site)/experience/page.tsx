@@ -1,20 +1,49 @@
-import { FaTools } from "react-icons/fa";
-import { FaGear } from "react-icons/fa6";
 import { boxCx } from "@/lib/box";
+import { InfoCard } from "@/components/shared/InfoCard";
+import { experiences } from "@/lib/experience";
 
 export default function ExperiencePage() {
   return (
     <div className={boxCx({ 
-      surface: "muted", 
-      direction: "row", 
-      paddingY: "lg",
+      surface: "transparent",
+      width: "auto",
+      gap: "md",
       items: "center", 
       justify: "start",
-      className: "my-[12rem] rounded-xl" 
-    })}>
-      <FaTools size={64} className="mx-[1rem]" />
-      <h1>page is currently under construction</h1>
-      <FaGear size={64} className="mx-[1rem]" />
+    })}
+    style={{
+      width: "clamp(20rem, 55vw, 96rem)",
+      maxWidth: "96rem"
+    }}>
+
+    {/* title */}
+    <div className={boxCx({ 
+      surface: "muted", 
+      paddingX: "lg",
+      paddingY: "md",
+      width: "full",
+      items: "start", 
+      justify: "start",
+      })}>
+        <div className={boxCx({ 
+        surface: "transparent", 
+        paddingX: "md",
+        width: "full",
+        items: "start", 
+        justify: "start",
+        className: "border-b-1 navbar-short-borders-bottom rounded-none text-title"
+        })}>
+          experience
+        </div>
     </div>
-    );
-  }
+
+    {experiences.map((experience, index) => (
+        <InfoCard 
+        key={index} 
+        data={experience}
+        />
+      ))}
+
+    </div>
+  );
+}
