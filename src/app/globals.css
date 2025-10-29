@@ -7,29 +7,6 @@
 @tailwind utilities;
 
 :root {
-  /* screen sizes */
-  --screen-xs: 475px;
-  --screen-sm: 640px;
-  --screen-md: 768px;
-  --screen-lg: 1024px;
-  --screen-xl: 1280px;
-  --screen-2xl: 1536px;
-  --screen-3xl: 1920px;
-  --screen-4xl: 2560px;
-  --screen-5xl: 3840px;
-
-  --scale-mobile: 0.8;
-  --scale-tablet: 0.9;
-  --scale-desktop: 1;
-  --scale-large: 1.05;
-  --scale-4k: 1.1;
-
-  --container-mobile: 100vw;
-  --container-tablet: 90vw;
-  --container-desktop: min(90vw, 1400px);
-  --container-large: min(85vw, 1600px);
-  --container-4k: min(80vw, 1800px);
-
   --text-name: clamp(1.5rem, calc(1.25vw + 1rem), 4rem);                /* 24-64px */
   --text-title: clamp(1.25rem, calc(0.8 * (1.25vw + 1rem)), 3.2rem);    /* 20-51.2px */
   --text-action: clamp(1.125rem, calc(0.65 * (1.25vw + 1rem)), 2.6rem); /* 18-41.6px */
@@ -103,7 +80,12 @@
   --color-*: initial;
   --font-size-*: initial;
   --spacing-*: initial;
-  --breakpoint-*: initial;
+
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
 
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -140,17 +122,14 @@
     @apply border-border outline-ring/50;
     font-family: monospace;
     transition: background-color 0.33s ease, color 0.33s ease, border-color 0.33s ease;
-    cursor: none !important;
   }
 
   main {
     position: relative;
-    /* z-index: 10; */
   }
 
   .content-layer {
     position: relative;
-    /* z-index: 10; */
   }
 
   html,
@@ -159,12 +138,19 @@
     padding: 0;
     width: 100%;
     height: 100%;
-    /* overflow-y: hidden; */
-    cursor: none !important;
   }
   body {
     @apply bg-background text-foreground;
   }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  * { cursor: none !important; }
+  html, body { cursor: none !important; }
+}
+
+@media (hover: none), (pointer: coarse) {
+  .target-cursor-wrapper { display: none !important; }
 }
 
 .navbar-short-borders-bottom {
@@ -233,8 +219,8 @@
   position: absolute;
   left: 50%;
   top: 50%;
-  width: 4px;
-  height: 4px;
+  width: 8px;
+  height: 8px;
   background: #fff;
   border-radius: 50%;
   transform: translate(-50%, -50%);
@@ -245,9 +231,9 @@
   position: absolute;
   left: 50%;
   top: 50%;
-  width: 4px;
-  height: 4px;
-  border: 2px solid #fff;
+  width: 8px;
+  height: 8px;
+  border: 4px solid #fff;
   will-change: transform;
 }
 

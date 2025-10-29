@@ -9,21 +9,21 @@ const config: Config = {
     "./src/lib/**/*.{js,ts,jsx,tsx}"
   ],
   theme: {
-    container: {
-      center: true,
-      padding: "2rem",
-      screens: {
-        'xs': '475px',
-        'sm': '640px',
-        'md': '768px',
-        'lg': '1024px',
-        'xl': '1280px',
-        '2xl': '1536px',
-        "3xl": "1920px",
-        "4xl": "2560px",
-        "5xl": "3840px",
-      },
-    },
+    // container: {
+    //   center: true,
+    //   padding: "2rem",
+    //   screens: {
+    //     'xs': '475px',
+    //     'sm': '640px',
+    //     'md': '768px',
+    //     'lg': '1024px',
+    //     'xl': '1280px',
+    //     '2xl': '1536px',
+    //     "3xl": "1920px",
+    //     "4xl": "2560px",
+    //     "5xl": "3840px",
+    //   },
+    // },
     extend: {
       fontFamily: {
         'mono': ["monospace"],

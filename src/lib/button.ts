@@ -3,7 +3,7 @@ import { clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 
 export const button = cva(
-  "inline-flex items-center justify-center border-0 hover:scale-105 focus-visible-ring rounded-md transition-all duration-100 cursor-target",
+  "inline-flex items-center justify-center border-0 hover:scale-105 rounded-md transition-all duration-100 cursor-target",
   {
     variants: {
 

@@ -10,6 +10,7 @@ export default function ExperiencePage() {
       gap: "md",
       items: "center", 
       justify: "start",
+      className: "pb-[max(env(safe-area-inset-bottom),var(--spacing-xl))] sm:pb-[var(--spacing-lg))]"
     })}
     style={{
       width: "clamp(20rem, 55vw, 96rem)",
