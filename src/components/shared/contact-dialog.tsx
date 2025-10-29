@@ -67,16 +67,16 @@ export function ContactDialog() {
         </button>
       </DialogTrigger>
 
-      <DialogContent className="w-[48rem] h-[48rem] justify-center border-1">
-        <DialogTitle className="flex justify-center border-b-1 navbar-short-borders-bottom w-[full] h-[clamp(3rem,4vw,5rem)] mx-auto px-[var(--spacing-md)] py-[var(--spacing-lg)] text-name">
+      <DialogContent className="w-full max-h-[90vh] justify-center border-1 pb-[var(--spacing-md)] md:max-w-[48rem]">
+        <DialogTitle className="flex justify-center items-center border-b-1 navbar-short-borders-bottom h-[clamp(3rem,4vw,5rem)] mx-auto px-[var(--spacing-md)] mb-[var(--spacing-md)] text-name">
           get in touch
         </DialogTitle>
-        <form onSubmit={handleSubmit} className="flex flex-col w-[32rem] items-center">
+        <form onSubmit={handleSubmit} className="flex flex-col w-full items-center px-[var(--spacing-xl)] pb-[var(--spacing-md)]">
           <div className="w-full">
             <label className="text-action">name</label>
             <Input
               title="name"
-              className="w-full h-[3rem] text-action mb-[1rem] cursor-target"
+              className="w-full h-[3rem] text-action cursor-target"
               value={formData.name}
               onChange={(e) => setFormData({...formData, name: e.target.value})}
               required
@@ -85,7 +85,7 @@ export function ContactDialog() {
             <label className="text-action">email</label>
             <Input
               title="email"
-              className="w-full h-[3rem] text-action mb-[1rem] cursor-target"
+              className="w-full h-[3rem] text-action mb-[var(--spacing-md)] cursor-target"
               value={formData.email}
               onChange={(e) => setFormData({...formData, email: e.target.value})}
               required
@@ -93,7 +93,7 @@ export function ContactDialog() {
 
             <Textarea
               title="message"
-              className="h-[20rem] resize-none mb-[1rem] text-body cursor-target"
+              className="h-[20rem] resize-none mb-[var(--spacing-md)] text-body cursor-target"
               placeholder="leave your message here"
               value={formData.message}
               onChange={(e) => setFormData({...formData, message: e.target.value})}

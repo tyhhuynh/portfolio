@@ -110,10 +110,10 @@ export function InfoCard({ data, className }: InfoCardProps) {
         <div className={boxCx({ 
           surface: "muted", 
           direction: "row",
-          paddingX: "sm",
+          paddingX: "md",
           items: "center", 
           justify: "start",
-          className: "text-body"
+          className: "pb-[var(--spacing-md))] text-body"
         })}>
           {data.description}
         </div>
@@ -123,7 +123,7 @@ export function InfoCard({ data, className }: InfoCardProps) {
         <div className={boxCx({ 
           surface: "muted", 
           direction: "row",
-          paddingX: "sm",
+          paddingX: "md",
           paddingY: "sm",
           items: "center", 
           justify: "start",

@@ -34,7 +34,7 @@ export function Intro() {
         animateOn="view" />
       </h2>
 
-      <p className="border-b-1 navbar-short-borders-bottom px-[var(--spacing-md)] pb-[var(--spacing-sm)] text-body">
+      <p className="border-b-1 leading-relaxed navbar-short-borders-bottom px-[var(--spacing-md)] pb-[var(--spacing-sm)] text-body">
         <DecryptedText 
           text="intentional, curious, resilient" 
           speed={50} 
