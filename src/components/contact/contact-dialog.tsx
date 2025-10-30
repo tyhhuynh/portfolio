@@ -2,9 +2,9 @@
 
 import { useState } from "react";
 import { buttonCx } from "@/lib/button";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/shared/ui/dialog";
-import { Input } from "@/components/shared/ui/input";
-import { Textarea } from "@/components/shared/ui/textarea";
+import { Dialog, DialogContent, DialogTitle, DialogTrigger } from "@/components/contact/dialog";
+import { Input } from "@/components/contact/input";
+import { Textarea } from "@/components/contact/textarea";
 import { toast } from "sonner";
 
 export function ContactDialog() {

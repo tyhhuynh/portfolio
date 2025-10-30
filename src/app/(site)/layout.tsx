@@ -2,7 +2,7 @@ import { SpeedInsights } from '@vercel/speed-insights/next';
 import type { Metadata } from 'next';
 import '../globals.css';
 import { ThemeProvider } from 'next-themes';
-import { Navbar } from '@/components/shared/navbar';
+import { Navbar } from '@/components/navbar/navbar';
 import TargetCursor from '@/components/shared/ui/TargetCursor';
 import { Toaster } from '@/components/shared/ui/sonner';
 import { ThemeDither } from '@/components/shared/ui/ThemeDither';
