@@ -1,3 +1,4 @@
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import type { Metadata } from 'next';
 import '../globals.css';
 import { ThemeProvider } from 'next-themes';
@@ -42,6 +43,7 @@ export default function RootLayout({
           <main className="relative flex flex-1 items-start justify-center px-safe pointer-events-none">
             <div className="max-w-9xl"> {/* determine width */}
               {children}
+              <SpeedInsights />
             </div>
           </main>
 
