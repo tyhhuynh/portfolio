@@ -64,7 +64,7 @@ export function Links() {
             </button>
 
             <button
-              onClick={() => window.open("/tyhuynh_resume.pdf")}
+              onClick={() => window.open("/TyHuynhResume.pdf")}
               className={buttonCx({ 
                 surface: "unselected", 
                 fontSize: "md",
