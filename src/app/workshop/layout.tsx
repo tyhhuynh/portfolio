@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "../globals.css";
 import { ThemeProvider } from "next-themes";
-import { Navbar } from "@/components/shared/navbar";
+import { Navbar } from "@/components/navbar/navbar";
 import TargetCursor from "@/components/shared/ui/TargetCursor";
 import { Toaster } from "@/components/shared/ui/sonner";
 

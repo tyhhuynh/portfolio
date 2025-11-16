@@ -1,20 +1,45 @@
-import { FaTools } from "react-icons/fa";
-import { FaGear } from "react-icons/fa6";
 import { boxCx } from "@/lib/box";
+import { InfoCard } from "@/components/shared/InfoCard";
 
 export default function ProjectsPage() {
   return (
 	<div className={boxCx({ 
-    surface: "muted", 
-    direction: "row", 
-    paddingY: "lg",
+    surface: "transparent",
+    width: "auto",
+    gap: "md",
     items: "center", 
     justify: "start",
-    className: "my-[12rem] rounded-xl" 
-  })}>
-    <FaTools size={64} className="mx-[1rem]" />
-    <h1>page is currently under construction</h1>
-    <FaGear size={64} className="mx-[1rem]" />
+    className: "py-[max(env(safe-area-inset-bottom),var(--spacing-md))] sm:py-[var(--spacing-lg))]"
+    })}
+    style={{
+      width: "clamp(20rem, 55vw, 96rem)",
+      maxWidth: "96rem"
+    }}>
+
+    {/* title */}
+    <div className={boxCx({ 
+      surface: "muted", 
+      paddingX: "md",
+      paddingY: "md",
+      width: "full",
+      items: "start", 
+      justify: "start",
+      })}
+      style={{
+        width: "clamp(20rem, 55vw, 96rem)",
+        maxWidth: "96rem"
+      }}>
+        <div className={boxCx({ 
+        surface: "transparent", 
+        paddingX: "md",
+        items: "start", 
+        justify: "start",
+        className: "w-full border-b-1 navbar-short-borders-bottom rounded-none text-title"
+        })}>
+          projects
+        </div>
+    </div>
+    
 	</div>
   );
 }
