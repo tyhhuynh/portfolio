@@ -23,7 +23,7 @@ export function About() {
       </p>
 
       <p className="text-caption">
-        if im not coding, im powerlifting, tinkering with new hardware, exploring AI/ML projects, or playing indie games to spark new ideas. currently developing a retro 2D game and training a computer vision model
+        if im not coding, im powerlifting, tinkering with new hardware, exploring AI/ML projects, or playing indie games to spark new ideas. currently messing with AI agents.
       </p>
 
       <p className="text-caption">
