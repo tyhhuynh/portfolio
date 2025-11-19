@@ -4,9 +4,9 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { boxCx } from "@/lib/box";
 import { buttonCx } from "@/lib/button";
-import { TimeDateBox } from "@/components/shared/time-date";
-import { ThemeButton } from "@/components/shared/theme-button";
-import { ContactDialog } from "@/components/shared/contact-dialog";
+import { TimeDateBox } from "@/components/navbar/time-loc";
+import { ThemeButton } from "@/components/navbar/theme-button";
+import { ContactDialog } from "@/components/contact/contact-dialog";
 
 
 export function Navbar({}: { className?: string }) {
@@ -56,7 +56,7 @@ export function Navbar({}: { className?: string }) {
         </div>
 
         {/* R-section: toggle theme button */}
-        <div className="flex basis-1/2 min-w-0 items-center justify-end pb-[var(--spacing-sm)] order-2 sm:basis-1/5 sm:order-none">
+        <div className="flex basis-1/2 min-w-0 items-end justify-end pb-[var(--spacing-sm)] order-2 sm:basis-1/5 sm:order-none">
           <ThemeButton />
         </div>
 

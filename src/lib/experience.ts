@@ -3,14 +3,14 @@ import { InfoCardData } from "@/components/shared/InfoCard";
 export const experiences: InfoCardData[] = [
   {
     title: "Client Software Developer",
-    period: "April 2025 - June 2025",
+    period: "April 2025 - July 2025",
     picture: {
       src: "/images/codelab.png",
       alt: "CodeLab",
       href: "https://codelabdavis.com/"
     },
     techStack: ["Next.JS", "React", "Tailwind CSS", "FastAPI", "Playwright API", "OpenAI API", "PostgreSQL", "Microsoft Azure"],
-    description: "Developed a full-stack platform that automated sustainability data collection and summarization by integrating OpenAI's API with a Python-based web-scraping pipeline. Directed Frontend development, schema design, and API integration, ensuring smooth coordination across developer and design teams.",
+    description: "Developed a full-stack web application that extracted, summarized, and stored data, which populated a scalable dashboard that displayed key metrics.",
     link: {
       text: "Read more about the project here",
       href: "https://codelabdavis.medium.com/company-z-e20927c9feaf"
@@ -25,7 +25,7 @@ export const experiences: InfoCardData[] = [
       href: "https://os.codelabdavis.com/"
     },
     techStack: ["Next.JS", "Tailwind CSS", "ShadCN", "Storybook"],
-    description: "Proposed and built a Stepper component for CodeLab's open-source UI library after contributing a reusable Progress Bar. The experience strengthened understanding of scalable front-end architecture and led to the acceptance in the Client cohort."
+    description: "Developed two reusable components (Progress Bar & Stepper) for CodeLab's open-source UI library, which led to the understanding of scalable front-end architecture and the acceptance into Client cohort."
   },
   {
     title: "IET: Jr. Computer Room Consultant",
@@ -35,6 +35,6 @@ export const experiences: InfoCardData[] = [
       alt: "UCD: IET Logo",
       href: "https://iet.ucdavis.edu/"
     },
-    description: "Maintained reliability across seven campus computer labs by resolving hardware, network, and account-related issues on both Windows and macOS systems. Delivered tailored technical support to students and faculty while managing a database for lost and found items."
+    description: "Maintained system stability across seven campus computer labs by resolving IT-related issues such as hardware, network, and account access/permissions on both Windows and macOS systems. Delivered tailored technical support to students and faculty while managing a database for lost and found items."
   }
 ];

@@ -10,7 +10,7 @@ export default function ExperiencePage() {
       gap: "md",
       items: "center", 
       justify: "start",
-      className: "pb-[max(env(safe-area-inset-bottom),var(--spacing-xl))] sm:pb-[var(--spacing-lg))]"
+      className: "py-[max(env(safe-area-inset-bottom),var(--spacing-md))] sm:py-[var(--spacing-lg))]"
     })}
     style={{
       width: "clamp(20rem, 55vw, 96rem)",
@@ -20,19 +20,21 @@ export default function ExperiencePage() {
     {/* title */}
     <div className={boxCx({ 
       surface: "muted", 
-      paddingX: "lg",
+      paddingX: "md",
       paddingY: "md",
-      width: "full",
       items: "start", 
       justify: "start",
-      })}>
+      })}
+      style={{
+        width: "clamp(20rem, 55vw, 96rem)",
+        maxWidth: "96rem"
+      }}>
         <div className={boxCx({ 
         surface: "transparent", 
         paddingX: "md",
-        width: "full",
         items: "start", 
         justify: "start",
-        className: "border-b-1 navbar-short-borders-bottom rounded-none text-title"
+        className: "w-full border-b-1 navbar-short-borders-bottom rounded-none text-title"
         })}>
           experience
         </div>
