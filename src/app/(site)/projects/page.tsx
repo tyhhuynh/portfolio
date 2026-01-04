@@ -1,5 +1,6 @@
 import { boxCx } from "@/lib/box";
 import { InfoCard } from "@/components/shared/InfoCard";
+import { projects } from "@/lib/projects";
 
 export default function ProjectsPage() {
   return (
@@ -39,6 +40,14 @@ export default function ProjectsPage() {
           projects
         </div>
     </div>
+
+    {projects.map((project, index) => (
+      <InfoCard
+      key={index}
+      data={project}
+      className="w-full"
+      />
+    ))}
     
 	</div>
   );

@@ -2,7 +2,7 @@ import { InfoCardData } from "@/components/shared/InfoCard";
 
 export const experiences: InfoCardData[] = [
   {
-    title: "Client Software Developer",
+    title: "Client-Associate Software Developer",
     period: "April 2025 - July 2025",
     picture: {
       src: "/images/codelab.png",
@@ -10,7 +10,7 @@ export const experiences: InfoCardData[] = [
       href: "https://codelabdavis.com/"
     },
     techStack: ["Next.JS", "React", "Tailwind CSS", "FastAPI", "Playwright API", "OpenAI API", "PostgreSQL", "Microsoft Azure"],
-    description: "Developed a full-stack web application that extracted, summarized, and stored data, which populated a scalable dashboard that displayed key metrics.",
+    description: "Developed a full-stack internal tool that automated the extraction, summarization, and storage of specific data, which populated on a scalable analytics dashboard that displayed key insights.",
     link: {
       text: "Read more about the project here",
       href: "https://codelabdavis.medium.com/company-z-e20927c9feaf"
@@ -35,6 +35,6 @@ export const experiences: InfoCardData[] = [
       alt: "UCD: IET Logo",
       href: "https://iet.ucdavis.edu/"
     },
-    description: "Maintained system stability across seven campus computer labs by resolving IT-related issues such as hardware, network, and account access/permissions on both Windows and macOS systems. Delivered tailored technical support to students and faculty while managing a database for lost and found items."
+    description: "Maintained system stability across seven campus computer labs by resolving IT-related issues such as hardware, software, network, and account authentication/authorization on both Windows and macOS systems. Delivered onsite technical support and troubleshooting to students and faculty while managing a database for lost & found items."
   }
 ];

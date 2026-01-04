@@ -44,6 +44,7 @@ export default function ExperiencePage() {
         <InfoCard 
         key={index} 
         data={experience}
+        className="w-full"
         />
       ))}
 
